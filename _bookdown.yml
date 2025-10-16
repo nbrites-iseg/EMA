@@ -1,0 +1,4 @@
+book_filename: "EMA"
+output_dir: "docs"
+delete_merged_file: true
+

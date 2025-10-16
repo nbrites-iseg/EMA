@@ -7,13 +7,6 @@ fontfamily: mathpazo
 site: bookdown::bookdown_site
 documentclass: book
 output:
-  bookdown::gitbook:
-    df_print: kable
-    highlight: kate
-    css: style.css
-    language: pt-PT 
-    config:
-      download: ["pdf"]
   bookdown::pdf_document2:
     always_allow_html: true
     number_sections: true
@@ -24,6 +17,13 @@ output:
     latex_engine: lualatex
     keep_tex: true
     extra_dependencies: ["actuarialsymbol"]
+  bookdown::gitbook:
+    df_print: kable
+    highlight: kate
+    css: style.css
+    language: pt-PT 
+    config:
+      download: ["pdf"]
 header-includes:
 - \usepackage[most]{tcolorbox}
 - \usepackage{titling}
