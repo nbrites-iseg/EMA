@@ -1,0 +1,2217 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+\documentclass[
+  11pt,
+  a4paper,
+]{book}
+\usepackage{xcolor}
+\usepackage[margin=0.65in]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{5}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage[]{mathpazo}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage[most]{tcolorbox}
+\usepackage{titling}
+\usepackage{amsmath,amssymb}
+\usepackage{amsmath}
+\usepackage[mathcal]{eucal}
+\usepackage[table]{xcolor}
+\usetikzlibrary{fit, backgrounds}
+\usepackage{arydshln}
+\usepackage[most]{tcolorbox}
+\usepackage{booktabs}
+\usepackage{amsthm}
+\usepackage{listings}
+\usepackage{tikz}
+\usepackage{xcolor}
+\usetikzlibrary{matrix}
+\usepackage{luacode}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{arrows.meta, positioning}
+\renewcommand{\contentsname}{Conteúdo}
+\renewcommand{\chaptername}{Capítulo}
+\renewcommand*\familydefault{\sfdefault}
+\pretitle{\begin{center} \includegraphics[width=4in,height=2in]{figures/iseg.png}\LARGE\\}
+\usepackage{actuarialsymbol}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+\usepackage[normalem]{ulem}
+\usepackage{makecell}
+\usepackage{xcolor}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Advanced Mathematical Economics (Part II)},
+  pdfauthor={Nuno M. Brites},
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={Blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Advanced Mathematical Economics (Part II)}
+\usepackage{etoolbox}
+\makeatletter
+\providecommand{\subtitle}[1]{% add subtitle to \maketitle
+  \apptocmd{\@title}{\par {\large #1 \par}}{}{}
+}
+\makeatother
+\subtitle{PhD in Economics}
+\author{Nuno M. Brites}
+\date{October 2025}
+
+\usepackage{amsthm}
+\newtheorem{theorem}{Theorem}[chapter]
+\newtheorem{lemma}{Lemma}[chapter]
+\newtheorem{corollary}{Corollary}[chapter]
+\newtheorem{proposition}{Proposition}[chapter]
+\newtheorem{conjecture}{Conjecture}[chapter]
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[chapter]
+\theoremstyle{definition}
+\newtheorem{example}{Example}[chapter]
+\theoremstyle{definition}
+\newtheorem{exercise}{Exercise}[chapter]
+\theoremstyle{definition}
+\newtheorem{hypothesis}{Hypothesis}[chapter]
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+\newtheorem*{solution}{Solution}
+\begin{document}
+\maketitle
+
+{
+\hypersetup{linkcolor=}
+\setcounter{tocdepth}{2}
+\tableofcontents
+}
+\chapter*{}\label{section}
+\addcontentsline{toc}{chapter}{}
+
+\begin{center}\includegraphics[width=0.4\linewidth]{figures/iseg} \end{center}
+
+\(\,\)
+
+\(\,\)
+
+\(\,\)
+
+\(\,\)
+
+\(\,\)
+
+\textbf{This document is not intended to substitute the recommended textbooks.}
+
+\(\,\)
+
+All errors and omissions are entirely my own.
+
+\(\,\)
+
+Thanks!
+
+Nuno M. Brites
+
+\href{mailto:nbrites@iseg.ulisboa.pt}{\nolinkurl{nbrites@iseg.ulisboa.pt}}
+
+\vfill
+
+\(\,\)
+
+\(\,\)
+
+\(\,\)
+
+\(\,\)
+
+\textbf{All rights reserved. Reproduction, copying, distribution, public communication, transformation or any other form of use, in whole or in part, of the contents of this site, including text, code and images, without prior written authorisation from the author is strictly prohibited. Any unauthorised use constitutes a breach of copyright and may give rise to civil and criminal liability under applicable law.}
+
+2025 \textbar{} Nuno M. Brites \textbar{}
+\href{mailto:nbrites@iseg.ulisboa.pt}{\nolinkurl{nbrites@iseg.ulisboa.pt}}
+
+\chapter{Introduction to Stochastic Processes}\label{intro-stoch-proc}
+
+\section{Fundamental Concepts}\label{conceitos-fundamentais}
+
+This section provides a brief review of basic concepts in probability theory and random variables. We then introduce the notion of a \emph{stochastic process}, understood as a family of random variables defined on a probability space and indexed by a parameter set, typically interpreted as time. Finally, we examine some fundamental classes of stochastic processes, in particular those with independent and stationary increments, as well as strictly and weakly stationary processes.
+
+The \textbf{sample space} is denoted by \(\Omega\) and represents the set of all possible outcomes of a random experiment. Throughout this section, we assume that \(\Omega\) is a non-empty set.
+
+\(\,\)
+
+\begin{definition}[Sigma-algebra]
+A \(\sigma\)-algebra is a collection \(\mathcal{F}\) of subsets of \(\Omega\) satisfying the following properties:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \(\emptyset \in \mathcal{F}\) and \(\Omega \in \mathcal{F}\);
+\item
+  If \(A \in \mathcal{F}\), then \(A^c \in \mathcal{F}\), where \(A^c\) denotes the complement of \(A\) with respect to \(\Omega\);
+\item
+  If \(A_n \in \mathcal{F}\) for all \(n \in \mathbb{N}\) and the sets are countable, then\\
+  \[
+  \bigcup_{n \in \mathbb{N}} A_n \in \mathcal{F}.
+  \]
+\end{enumerate}
+
+The elements of \(\mathcal{F}\) are called measurable sets (or \(\mathcal{F}\)-measurable sets to specify the underlying \(\sigma\)-algebra).
+\end{definition}
+
+\(\,\)
+
+\begin{definition}[Probability Measure]
+
+A \textbf{probability measure} \(P\) on the \(\sigma\)-algebra \(\mathcal{F}\) is a function\\
+\[
+P: \mathcal{F} \rightarrow [0, 1]
+\]\\
+satisfying the following properties:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \(P(\emptyset) = 0\);
+\item
+  \(P(\Omega) = 1\);
+\item
+  If \((A_n)_{n \in \mathbb{N}}\) is a sequence of pairwise disjoint sets in \(\mathcal{F}\), then\\
+  \[
+  P\left(\bigcup_{n \in \mathbb{N}} A_n\right) = \sum_{n \in \mathbb{N}} P(A_n).
+  \]
+\end{enumerate}
+
+\end{definition}
+
+\(\,\)
+
+\begin{definition}[Probability Space]
+A \textbf{probability space} is a triple \((\Omega, \mathcal{F}, P),\) where:
+
+\begin{itemize}
+\tightlist
+\item
+  \(\Omega\) is a set (the sample space),
+\item
+  \(\mathcal{F}\) is a \(\sigma\)-algebra on \(\Omega\),
+\item
+  \(P\) is a probability measure on \(\mathcal{F}\).
+\end{itemize}
+
+The elements of \(\mathcal{F}\) are called \textbf{events}. For any \(A \in \mathcal{F}\), the value \(P(A)\) represents the probability of the event \(A\).
+\end{definition}
+
+\(\,\)
+
+\begin{definition}[Borel Sigma-algebra]
+A \textbf{Borel \(\sigma\)-algebra}, denoted \(\mathcal{B}\), defined on a set \(E\), satisfies the following properties:
+
+\begin{itemize}
+\item
+  \(\emptyset \in \mathcal{B}\) and \(E \in \mathcal{B}\);
+\item
+  \(\mathcal{B}\) is closed under complementation: for all \(A \in \mathcal{B}\), we have \(A^c \in \mathcal{B}\);
+\item
+  \(\mathcal{B}\) is closed under countable unions: if \(A_i \in \mathcal{B}\) for all \(i \in \mathbb{N}\), then\\
+  \[
+  \bigcup\limits_{i \in \mathbb{N}} A_i \in \mathcal{B}.
+  \]
+\end{itemize}
+
+A Borel \(\sigma\)-algebra is a specific example of a \(\sigma\)-algebra and is typically associated with the open sets of \(E\). The most common Borel \(\sigma\)-algebra is the one on \(\mathbb{R}\), denoted by \(\mathcal{B}_{\mathbb{R}}\), or simply \(\mathcal{B}\) when there is no ambiguity.
+\end{definition}
+
+\(\,\)
+
+\begin{definition}[Random Variable]
+
+Let \((\Omega, \mathcal{F}, P)\) be a probability space. A function\\
+\[
+X: \Omega \rightarrow \mathbb{R}
+\]\\
+is said to be a \textbf{random variable (r.v.)} if\\
+\[
+\forall ~ B \in \mathcal{B}: X^{-1}(B) \in \mathcal{F},
+\]\\
+where \(\mathcal{B}\) denotes the Borel \(\sigma\)-algebra on \(\mathbb{R}\).
+
+In addition, we say that \(X\) is \textbf{\(\mathcal{F}\)-measurable}, or simply \textbf{measurable} when the \(\sigma\)-algebra is understood from context.
+
+\begin{center}\includegraphics[width=0.6\linewidth]{_main_files/figure-latex/fig0-1} \end{center}
+
+\end{definition}
+
+\(\,\)
+
+\begin{theorem}
+Let \(X: \Omega \to \mathbb{R}\) be a random variable. Define
+\[
+\sigma(X) = \{ X^{-1}(B) : B \in \mathcal{B} \}.
+\]
+Then, \(\sigma(X)\) is the smallest \(\sigma\)-algebra on \(\Omega\) with respect to which \(X\) is measurable. This \(\sigma\)-algebra, which is contained in \(\mathcal{F}\), is called the \textbf{\(\sigma\)-algebra generated by \(X\)}.
+\end{theorem}
+
+\(\,\)
+
+\begin{definition}[Mean and Variance]
+Let \((\Omega, \mathcal{F}, P)\) be a probability space, and let \(X: \Omega \rightarrow \mathbb{R}\) be a random variable. The \textbf{expected value} (or \textbf{mean}) and the \textbf{variance} of \(X\) are defined as follows:
+
+\textbf{1. General case (with probability measure \(P\)):}
+\[
+E(X) = \int_\Omega X \, dP, \quad 
+\operatorname{Var}(X) = \int_\Omega (X - E(X))^2 \, dP,
+\]
+provided these integrals exist and are finite.
+
+\textbf{2. Discrete case:}\\
+If \(X\) takes values in a discrete set \(\{x_1, x_2, \dots\}\) with probabilities \(p_i = P(X = x_i)\), then
+\[
+E(X) = \sum_i x_i \, p_i, \quad 
+\operatorname{Var}(X) = \sum_i (x_i - E(X))^2 \, p_i.
+\]
+
+\textbf{3. Continuous case:}\\
+If \(X\) has a probability density function \(f_X(x)\) with respect to the Lebesgue measure, then
+\[
+E(X) = \int_{-\infty}^{+\infty} x f_X(x) \, dx, \quad 
+\operatorname{Var}(X) = \int_{-\infty}^{+\infty} (x - E(X))^2 f_X(x) \, dx.
+\]
+\end{definition}
+
+\(\,\)
+
+\begin{definition}
+
+Let \((\Omega, \mathcal{F}, P)\) be a probability space, and let \(X\) be a random variable defined on this space.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \(X\) is said to be a \textbf{square-integrable random variable} if\\
+  \[
+  E(X^2) < +\infty;
+  \]
+\item
+  The space \textbf{\(L^2\)} is the set of all square-integrable random variables defined on \((\Omega, \mathcal{F}, P)\);
+\item
+  The \textbf{\(L^2\) norm} is defined by
+  \[
+  \forall ~ X \in L^2:~ \|X\|_{L^2} = \left(E(X^2)\right)^{1/2}.
+  \]
+\end{enumerate}
+
+\end{definition}
+
+\(\,\)
+
+\begin{definition}
+Let \((X_n : n \in \mathbb{N})\) be a sequence of random variables in \(L^2\). We say that \((X_n)\) \textbf{converges to \(X\) in \(L^2\)} if
+\[
+\|X_n - X\|_{L^2} \rightarrow 0 \quad \text{as} \quad n \to +\infty,
+\]
+or, equivalently,
+\[
+E\left((X_n - X)^2\right) \to 0 \quad \text{as} \quad n \to +\infty.
+\]
+
+This type of convergence is called \textbf{mean square convergence}, and it is denoted by
+\[
+X_n \xrightarrow{m.s.} X \quad \text{as} \quad n \to +\infty,
+\]
+or
+\[
+\mathop{l.i.m.}\limits_{n \to +\infty} X_n = X.
+\]
+\end{definition}
+
+\(\,\)
+
+\begin{definition}
+
+Let \(X\) be a random variable and let \((X_n : n \in \mathbb{N})\) be a sequence of random variables defined on the probability space \((\Omega, \mathcal{F}, P)\).
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  We say that \(X_n\) \textbf{converges almost surely} (a.s.) to \(X\), or that it \textbf{converges with probability 1}, denoted by\\
+  \[
+  X_n \xrightarrow{a.s.} X \quad \text{or} \quad \lim_{n \to +\infty} X_n = X \quad \text{a.s.},
+  \]\\
+  if \(X_n(\omega) \to X(\omega)\) for all \(\omega \in \Omega \setminus N\), where \(N \in \mathcal{F}\) is a null set, i.e., \(P(N) = 0\).
+\item
+  We say that \(X_n\) \textbf{converges in probability} (or \textbf{stochastically}) to \(X\), denoted by\\
+  \[
+  X_n \xrightarrow{P} X \quad \text{or} \quad P\text{-}\lim_{n \to +\infty} X_n = X,
+  \]\\
+  if, for every \(\delta > 0\),\\
+  \[
+  P(|X_n - X| > \delta) \to 0 \quad \text{as} \quad n \to +\infty.
+  \]
+\end{enumerate}
+
+\end{definition}
+
+\(\,\)
+
+When studying phenomena that exhibit no temporal evolution, one typically uses \textbf{random samples} --- that is, repetitions of i.i.d. observations (independent and identically distributed).
+
+But what if we are dealing with \textbf{random variables} that have already been observed (or could have been) in the past and may be observed again in the future?
+
+This is the case, for example, when studying:
+
+\begin{itemize}
+\item
+  the daily price of a stock on the financial market;
+\item
+  the evolution of the unemployment rate over a given period;
+\item
+  the number of people arriving at a certain queue to be served;
+\item
+  the temperature over time at a specific location;
+\item
+  \(\ldots\)
+\end{itemize}
+
+In such cases, we typically have only a \textbf{single realisation} (called a \textbf{trajectory} or \textbf{sample path}) from which we seek to draw conclusions.
+
+In this trajectory, observations are no longer independent.
+
+Typical objectives include:
+
+\begin{itemize}
+\item
+  forecasting future values;
+\item
+  identifying the nature of the underlying evolution;
+\item
+  filtering (i.e., prediction using partial observations).
+\end{itemize}
+
+\(\,\)
+
+\begin{definition}[Stochastic Process]
+
+A \textbf{stochastic process} (SP) is a family of random variables \(\{X_t, ~t \in T\}\) defined on the same probability space \((\Omega, \mathcal{F}, P)\) and taking values in the same measurable space \((E, \mathcal{B})\), where:
+
+\begin{itemize}
+\item
+  \(T\): parameter space (or time);
+\item
+  \(\Omega\): sample space;
+\item
+  \(\mathcal{F}\): \(\sigma\)-algebra defined on \(\Omega\);
+\item
+  \(P\): probability measure;
+\item
+  \(E\): state space (values taken by \(X\));
+\item
+  \(\mathcal{B}\): Borel \(\sigma\)-algebra defined on \(E\).
+\end{itemize}
+
+\end{definition}
+
+\(\,\)
+
+\begin{remark}
+\leavevmode
+
+\begin{itemize}
+\item
+  Given a probability space \((\Omega, \mathcal{F}, P)\) and an arbitrary set \(T\), a SP is a function \(X(t,\omega)\) defined on \(T \times \Omega\), such that for each \(t \in T\), \(X_t(\omega)\) is a random variable.
+\item
+  The concept of SP generalises that of a random variable by making it depend on a parameter \(t\) with domain \(T\). Thus, a SP can be interpreted as an ordered family of random variables.
+\item
+  For each fixed \(\omega_0 \in \Omega\), \(X(\omega_0, t)\) is a non-random function of \(t\). In this way, a SP can be identified with a system that assigns to each point \(\omega \in \Omega\) a function of the parameter \(t\). Each of these functions is called a \textbf{trajectory} or \textbf{realisation} of the process \(X\).
+\end{itemize}
+
+\end{remark}
+
+\(\,\)
+
+\begin{definition}[Trajectory of a stochastic process]
+The \textbf{trajectory} or \textbf{realisation} of a stochastic process \(X\) is the collection
+\[
+\{X_t(\omega), ~ t \in T\}, \quad \forall ~ \omega \in \Omega.
+\]
+\end{definition}
+
+\(\,\)
+
+\begin{remark}
+
+In general, \((E, \mathcal{B}) = (\mathbb{R}^n, \mathcal{B}_{\mathbb{R}^n})\), where:
+
+\begin{itemize}
+\item
+  \(\mathbb{R}^n\): the set of possible values of the process \(X_t\);
+\item
+  \(\mathcal{B}_{\mathbb{R}^n}\): the Borel \(\sigma\)-algebra on \(\mathbb{R}^n\);
+\item
+  If \(n=1\), the SP is called a \textbf{univariate stochastic process};
+\item
+  If \(n > 1\), the SP is called a \textbf{multivariate stochastic process};
+\item
+  \(t\): the instant at which the observation is made or the time period relative to that observation;
+\item
+  If \(E\) is finite or countably infinite, then \(X\) is a \textbf{discrete state space stochastic process};
+\item
+  If \(E = \mathbb{R}\), then \(X\) is a \textbf{real-valued stochastic process};
+\item
+  If \(T\) is finite or countably infinite, then \(X\) is a \textbf{discrete time stochastic process} (typically \(T = \mathbb{N}_0\) or \(T = \mathbb{Z}\));
+\item
+  If \(T\) is uncountably infinite, then \(X\) is a \textbf{continuous time stochastic process} (typically \(T = \mathbb{R}^+_0\) or \(T = \mathbb{R}\)).
+\end{itemize}
+
+\end{remark}
+
+\(\,\)
+
+Below is an example of a trajectory of a stochastic process:
+
+\pandocbounded{\includegraphics[keepaspectratio]{_main_files/figure-latex/simulacao-movimento-browniano-1.pdf}}
+
+\(\,\)
+
+\begin{exercise}
+
+For each of the following stochastic processes, indicate the parameter space and the state space:
+
+\begin{enumerate}
+\def\labelenumi{(\alph{enumi})}
+\item
+  Let \(X_i\) be the amount of beer (in litres) ordered by the \(i\)-th customer entering a bar, and let \(N(t)\) be the number of customers who have arrived at the bar by time \(t\). The stochastic process is
+  \[
+  Z_t = \sum\limits_{i=1}^{N(t)} X_i, \quad t \geq 0,
+  \]
+  where \(Z_t\) represents the total amount of beer ordered up to time \(t\).
+\item
+  A baby sleeps in one of three positions: (i) lying on their back with a radiant expression; (ii) curled up in the fetal position; (iii) in the fetal position sucking their thumb. Let \(X_t\) be the baby's sleeping position at time \(t\). The process is \((X_t: \quad t \geq 0)\).
+\item
+  Let \(X_n\) be the state (on or off) of an office photocopier at noon on the \(n\)-th day. The process is \((X_n: \quad n = 1, 2, \dots)\).
+\end{enumerate}
+
+\end{exercise}
+
+\section{Classical types of stochastic processes}\label{tipos-classicos-de-processos-estocasticos}
+
+\subsection{Processes with independent and stationary increments}\label{processos-de-incrementos-independentes-e-estacionarios}
+
+\begin{definition}[Process with independent increments]
+\(\{X_t, ~ t \in T\}\) is a stochastic process with \textbf{independent increments} if and only if
+\[
+\forall ~ n \in \mathbb{N}, \forall ~ t_1, \ldots, t_n \in T: ~ t_1 < t_2 < \ldots < t_n \implies X_{t_2} - X_{t_1}, X_{t_3} - X_{t_2}, \ldots, X_{t_n} - X_{t_{n-1}}
+\]
+are mutually independent random variables.
+\end{definition}
+
+\(\,\)
+
+\begin{definition}[Process with stationary increments]
+\(\{X_t, ~ t \in T\}\) has \textbf{stationary increments} if and only if for all \(s, t \in T\), with \(s < t,\) the distribution of \(X_t - X_s\) depends only on the length \(t - s\).
+\end{definition}
+
+\(\,\)
+
+\begin{remark}
+In a stochastic process with stationary increments, the distribution of \(X_{t_1 + h} - X_{t_1}\) is the same as that of
+\(X_{t_2 + h} - X_{t_2}\), for all \(t_1, t_2 \in T\) and for all \(h \in \mathbb{R}_0^+\) such that \(t_1 + h, t_2 + h \in T\).
+\end{remark}
+
+\(\,\)
+
+\begin{definition}[Process with independent and stationary increments]
+Given a stochastic process (SP) \(X := \{X_t, ~ t \in T\}\), where \(T\) is equipped with an order relation, \(X\) is a process with \textbf{independent and stationary increments} if and only if it has independent increments and stationary increments.
+\end{definition}
+
+\subsection{Real Second-Order Stochastic Process}\label{real-second-order-stochastic-process}
+
+\begin{definition}[Gaussian Process]
+A stochastic process \(\{X_t, ~t \in T\}\) is called a \textbf{Gaussian Process} if
+\[
+\forall ~n \in \mathbb{N},~ \forall ~t_1, \ldots, t_n \in T, \quad (X_{t_1}, X_{t_2}, \ldots, X_{t_n}) \sim \mathcal{N}_n(\mu, \Sigma),
+\]
+that is, any finite vector of random variables from the process has a multivariate normal distribution.
+\end{definition}
+
+\(\,\)
+
+\begin{definition}[Real Second-Order Stochastic Process]
+A stochastic process \(\{X_t, ~ t \in T\}\) is called a \textbf{real second-order stochastic process} if, and only if,
+\[
+\forall ~t \in T: \; E\!\left(X_t^2\right) < +\infty.
+\]
+\end{definition}
+
+\(\,\)
+
+\begin{example}[Gaussian White Noise]
+
+A \textbf{Gaussian White Noise} process \(\{\varepsilon_t, ~t \in T\}\) is defined as a stochastic process that satisfies:
+
+\begin{itemize}
+\item
+  \(\forall ~t \in T, ~E(\varepsilon_t)=0\);
+\item
+  \(\forall ~t \in T, ~\mathrm{Var}(\varepsilon_t)=\sigma^2\);
+\item
+  \(\forall ~s, t \in T, s \neq t, ~\mathrm{Cov}(\varepsilon_s,\varepsilon_t)=0\);
+\item
+  \(\forall ~n \in \mathbb{N}, \forall ~t_1, t_2, \ldots, t_n \in T\), the vector \((\varepsilon_{t_1}, \varepsilon_{t_2}, \ldots, \varepsilon_{t_n})\) is Gaussian.
+\end{itemize}
+
+\end{example}
+
+\subsection{Stationary Processes}\label{stationary-processes}
+
+\begin{definition}[Strictly Stationary Process]
+A stochastic process \(\{X_t,~ t \in T\}\) is said to be \textbf{strictly stationary} (or strongly stationary) if:
+\[
+\forall~n \in \mathbb{N},~ \forall~t_1, \ldots, t_n \in T,~ \forall~h \in \mathbb{R} \text{ such that } t_1 + h, \ldots, t_n + h \in T,
+\]
+\[
+(X_{t_1}, \ldots, X_{t_n}) \stackrel{d}{=} (X_{t_1+h}, \ldots, X_{t_n+h}),
+\]
+that is, the joint distribution of any finite vector of random variables of the process is invariant under time shift.
+\end{definition}
+
+As a consequence of strict stationarity, we have the following theorem:
+
+\begin{theorem}
+
+If \(\{X_t, t \in T\}\) is a second-order stochastic process and is strictly stationary, then:
+
+\begin{itemize}
+\item
+  \(E(X_t) = m\), that is, the mean of the process is independent of \(t\);
+\item
+  \(\forall ~h \in T, ~ \Gamma(t,t+h) = \operatorname{Cov}(X_t, X_{t+h}) = \operatorname{Cov}(X_0, X_h) = \gamma(h)\),
+  independent of \(t\).
+\end{itemize}
+
+\end{theorem}
+
+\(\,\)
+
+\begin{definition}[Weakly Stationary Process]
+
+A stochastic process \(\{X_t, t \in T\}\) is \textbf{weakly stationary} (or second-order stationary) if and only if:
+
+\begin{itemize}
+\item
+  \(\forall ~t \in T, ~ E(X_t^2) < +\infty\);
+\item
+  \(\forall ~t \in T, ~ E(X_t) = m\), independent of \(t\);
+\item
+  \(\forall ~t \in T, \forall ~h \in T, ~ \operatorname{Cov}(X_t, X_{t+h}) = \gamma(h)\), i.e., the covariance depends only on \(h\).
+\end{itemize}
+
+\end{definition}
+
+\(\,\)
+
+\begin{remark}
+The function \(\gamma(h), ~ \forall ~ h \in T\), is called the \textbf{autocovariance function}. If \(h=0\), then
+\[
+\operatorname{Cov}(X_t, X_{t+h}) = \operatorname{Var}(X_t) = \gamma(0), \quad \forall ~ t \in T.
+\]
+This property is called \textbf{homoscedasticity}.
+\end{remark}
+
+\(\,\)
+
+Now, let's see that White Noise, \(\{\varepsilon_t, ~ t \in T\}\), is an example of a second-order stationary stochastic process:
+
+\begin{example}
+\leavevmode
+
+\begin{itemize}
+\item
+  \(E(\varepsilon_t) = 0\);
+\item
+  \(Var(\varepsilon_t) = \sigma^2 \implies E(\varepsilon_t^2) < + \infty\);
+\item
+  For \(t \neq s\), \(Cov(\varepsilon_s, \varepsilon_t) = 0 \implies\) independence between \(t\) and \(s\).
+\end{itemize}
+
+Thus,
+
+\[
+\gamma(h) = 
+\begin{cases}
+\sigma^2, & h = 0, \\
+0, & h \neq 0.
+\end{cases}
+\]
+
+Hence, the conditions for weak stationarity are satisfied.
+
+\end{example}
+
+\(\,\)
+
+\begin{remark}[Important remark]
+\[\text{Strong stationarity} + E(X_t^2) < +\infty \Rightarrow \text{Weak stationarity}.\]
+\[\text{Weak stationarity} \nRightarrow \text{Strong stationarity}.\]
+\end{remark}
+
+\(\,\)
+
+\begin{example}
+Consider the stochastic process \((X_t, ~ t \in \mathbb{N})\) where \(X_t\) has a Cauchy distribution, i.e., with probability density function
+\[
+f(x) = \frac{1}{\pi(1 + x^2)}.
+\]
+Since \(E(X_t)\) does not exist, then \(E(X_t^2)\) is not defined. Thus, the process is strongly stationary but not weakly stationary.
+\end{example}
+
+\(\,\)
+
+\begin{definition}[Autocorrelation function in stationary processes]
+Let \(\{X_t, ~ t \in T\}\) be a stationary stochastic process. The \textbf{autocorrelation function} \(\rho\) is defined by:
+\[
+\rho(h) = Corr(X_t, X_{t+h}) = \frac{Cov(X_t, X_{t+h})}{\sqrt{Var(X_t)} \sqrt{Var(X_{t+h})}} = \frac{\gamma(h)}{\gamma(0)}.
+\]
+\end{definition}
+
+\(\,\)
+
+\begin{exercise}
+
+Let \(X\) and \(Y\) be two random variables with zero mean, uncorrelated, and with the same variance \(\sigma^2 > 0\). Consider the stochastic process \((Z_t: ~ t \in \mathbb{Z})\) defined by:
+
+\[
+Z_t = f(t) \cdot X + g(t) \cdot Y, \quad t \in \mathbb{Z},
+\]
+
+where \(f\) and \(g\) are deterministic functions.
+
+\begin{enumerate}
+\def\labelenumi{(\alph{enumi})}
+\item
+  Find expressions for \(f\) and \(g\) so that the process \((Z_t: ~ t \in \mathbb{Z})\) has constant variance but is not necessarily weakly stationary.
+\item
+  Specify \(f\) and \(g\) such that \((Z_t: ~ t \in \mathbb{Z})\) is weakly stationary.
+\end{enumerate}
+
+\end{exercise}
+
+\(\,\)
+
+\begin{exercise}
+
+Let \(\varepsilon = (\varepsilon_t: ~ t \in \mathbb{Z})\) be a white noise process with variance \(\sigma^2 > 0\). Consider the stochastic processes \(X = (X_t: ~ t \in \mathbb{Z})\) and \(Y = (Y_t: ~ t \in \mathbb{Z})\) defined by:
+
+\[
+X_t = \varepsilon_t \quad \text{and} \quad Y_t = (-1)^t \varepsilon_t, \quad \forall ~ t \in \mathbb{Z}.
+\]
+
+\begin{enumerate}
+\def\labelenumi{(\alph{enumi})}
+\item
+  Prove that \(X\) and \(Y\) are weakly stationary.
+\item
+  Show that the process \((Z_t = X_t + Y_t: ~ t \in \mathbb{Z})\) is a non-stationary process.
+\end{enumerate}
+
+\end{exercise}
+
+\(\,\)
+
+\begin{exercise}
+
+Consider a stochastic process \(Y = (Y_t: t \in \mathbb{Z})\) such that
+\[Y_t = \varepsilon_t - \theta \varepsilon_{t-1}, \quad \theta \in [-1,1],\]
+where \((\varepsilon_t: t \in \mathbb{Z})\) is a Gaussian white noise with variance \(\sigma^2 > 0\).
+
+\begin{enumerate}
+\def\labelenumi{(\alph{enumi})}
+\item
+  Show that \(Y\) is Gaussian.
+\item
+  Determine the distribution of the random variable \(Y_t\), for all \(t \in \mathbb{Z}\).
+\item
+  Determine the autocorrelation function of \(Y\).
+\item
+  What can you conclude about the strong and weak stationarity of \(Y\)?
+\end{enumerate}
+
+\end{exercise}
+
+\(\,\)
+
+\begin{exercise}
+
+Let \(X = (X_t: ~ t \geq 0)\) be a stochastic process defined on the probability space \((\Omega, \mathcal{F}, P)\) such that, for every \(t \geq 0\), \(X_t \sim \mathcal{N}(0, t)\) and \(P(X_0 = 0) = 1\).
+
+\begin{enumerate}
+\def\labelenumi{(\alph{enumi})}
+\item
+  Under what conditions is \(X\) a process with independent and stationary increments?
+\item
+  Assuming \(X\) is a process with independent and stationary increments, show that:
+\item
+  For all \(t, s \in [0,+\infty)\) with \(t > s\), it holds that
+  \[X_t - X_s \sim \mathcal{N}(0, |t - s|);\]
+\end{enumerate}
+
+\begin{enumerate}
+\def\labelenumi{(\roman{enumi})}
+\setcounter{enumi}{1}
+\item
+  \(X\) is a centered Gaussian process.
+\item
+  Consider the stochastic process \(Y = (Y_t: t \geq 0)\) defined by:
+  \[
+  Y(t) = 
+  \begin{cases}
+  t, & \text{if } X_t \geq 0, \\
+  -t, & \text{if } X_t < 0.
+  \end{cases}
+  \]
+  Show that \(Y\) is a centered second-order stochastic process. Is \(Y\) stationary in any sense? Justify your answer.
+\end{enumerate}
+
+\end{exercise}
+
+\(\,\)
+
+\begin{exercise}
+
+Let \(X = (X_t: ~t \in \mathbb{Z})\) and \((\varepsilon_t: ~t \in \mathbb{Z})\) be two stochastic processes defined on the probability space \((\Omega, \mathcal{F}, P)\), such that:
+\[
+\forall ~t \in \mathbb{Z}, \quad X_t = \sum\limits_{j=0}^{+\infty} \left( \frac{4}{5} \right)^j \varepsilon_{t-j}.
+\]
+
+\begin{enumerate}
+\def\labelenumi{(\alph{enumi})}
+\item
+  Explain under which conditions \(\varepsilon\) is a white noise.
+\item
+  Suppose that \(\varepsilon\) is a white noise such that \(E[\varepsilon_t^2] = 9/50\).
+\item
+  Prove that \(X\) is weakly stationary and indicate the corresponding mean function and autocovariance function;
+\end{enumerate}
+
+\begin{enumerate}
+\def\labelenumi{(\roman{enumi})}
+\setcounter{enumi}{1}
+\item
+  Now suppose that \(X\) is a Gaussian process. Specify the distribution of the random vector \((X_t, X_s), ~ \forall ~ t, s \in \mathbb{Z}\).
+\item
+  Consider the stochastic process \(Y = (Y_t: t \in \mathbb{Z})\) defined by:
+  \[
+  Y_t = 
+  \begin{cases}
+  \frac{1}{2}, & \text{if } X_t \geq 0, \\
+  -1, & \text{if } X_t < 0,
+  \end{cases}
+  \]
+  assuming that \(X\) satisfies the conditions in item (b) ii). Calculate the mean function of \(Y\) and show that \(Y\) is weakly stationary.
+\end{enumerate}
+
+\end{exercise}
+
+\(\,\)
+
+\begin{exercise}
+
+Let \((\varepsilon_t: t \in \mathbb{Z})\) be a Gaussian white noise with variance \(\sigma^2 > 0\). Consider another stochastic process \((Y_t: ~t \in \mathbb{Z})\) defined by:
+\[
+Y_t = \varepsilon_t - \theta \varepsilon_{t-1} - \frac{\theta}{2} \varepsilon_{t-2}, \quad \theta \in [-1,1].
+\]
+
+\begin{enumerate}
+\def\labelenumi{(\alph{enumi})}
+\item
+  Define a Gaussian process and show that \(Y\) is Gaussian.
+\item
+  Determine the autocorrelation function of the process \(Y\).
+\end{enumerate}
+
+\end{exercise}
+
+\subsection{Martingales}\label{martingales}
+
+From a modeling perspective, martingales are suitable for modeling random phenomena such as gambling.
+
+\begin{definition}[Martingale]
+
+A stochastic process \(\{X_t, ~ t \in T\}\) is a \textbf{Martingale} if and only if:
+
+\begin{itemize}
+\item
+  \(E(|X_t|) < +\infty\);
+\item
+  For all \(n \in \mathbb{N}\), for all \(t_1 < \ldots < t_{n+1} \in T\):
+  \[
+  E(X_{t_{n+1}} \mid X_{t_1}, \ldots, X_{t_n}) = X_{t_n}.
+  \]
+\end{itemize}
+
+\end{definition}
+
+\(\,\)
+
+\begin{remark}
+
+In the definition of Martingale, we can also consider:
+
+\begin{itemize}
+\item
+  Submartingales, when for all \(n \in \mathbb{N}\) and for all \(t_1 < \ldots < t_{n+1} \in T\):
+  \[
+  E(X_{t_{n+1}} \mid X_{t_1}, \ldots, X_{t_n}) \leq X_{t_n}.
+  \]
+\item
+  Supermartingales, when for all \(n \in \mathbb{N}\) and for all \(t_1 < \ldots < t_{n+1} \in T\):
+  \[
+  E(X_{t_{n+1}} \mid X_{t_1}, \ldots, X_{t_n}) \geq X_{t_n}.
+  \]
+\end{itemize}
+
+\end{remark}
+
+\(\,\)
+
+\begin{exercise}
+\leavevmode
+
+Let \(X_0, X_1, \dots\) be independent random variables with finite zero mean and define \(S_n = \sum_{i=0}^n X_i\). Show that the stochastic process \(\{S_n: n \in \mathbb{N}_0\}\) is a Martingale.
+
+\end{exercise}
+
+\(\,\)
+
+\begin{exercise}
+\leavevmode
+
+Consider a game where in each round the player can win or lose one euro, with equal probability. After \(n\) rounds, the player's gain is given by \(S_n = \sum_{i=1}^n X_i\), where \(X_1, X_2, \dots\) are independent random variables. Show that the stochastic process \(\{S_n: n \in \mathbb{N}\}\) is a Martingale.
+
+\end{exercise}
+
+\(\,\)
+
+\begin{exercise}
+\leavevmode
+
+Let \(X_1, X_2, \dots\) be independent random variables with mean one. Show that the stochastic process \(\{Z_n: n \in \mathbb{N}\}\) defined by
+\[
+Z_n = \prod_{i=1}^n X_i
+\]
+is a Martingale.
+
+\end{exercise}
+
+\(\,\)
+
+\begin{exercise}
+
+Let \((X_n, n=0,1,2,\dots)\) be a stochastic process with state space \(\mathbb{N}_0\), with mean one for \(n \geq 1\), independent increments, and such that \(P(X_0=0) = 1\).
+
+\begin{enumerate}
+\def\labelenumi{(\alph{enumi})}
+\item
+  What does it mean to say that the process \(X\) has independent increments?
+\item
+  Prove that the process \((X_n, n=0,1,2,\dots)\) is a Martingale.
+\item
+  Given that \(Var(X_n) = 1\), what can be said about the weak stationarity of the process \((X_n, n=0,1,2,\dots)\)?
+\end{enumerate}
+
+\end{exercise}
+
+\subsection{Markov Processes}\label{markov-processes}
+
+Markov processes are suitable for modeling random phenomena whose future behavior is not influenced by the knowledge of their past, but only depends on the current state. In other words, the probability that the physical system is in a given state at time \(t\) can be deduced from the knowledge of that state at any previous time, and this probability does not depend on the ``history'' of the system before \(t\).
+
+\(\,\)
+
+\begin{definition}[Markov Process]
+A stochastic process \(\{X_t, t \in T\}\) with state space \(E\) is called a \textbf{Markov process} (or \textbf{Markovian}) if and only if for all \(n \in \mathbb{N}\), for all \(t_1 < \ldots < t_{n+1} \in T\), for all \(x_1, \ldots, x_{n+1} \in E\), and for all \(B \in \mathcal{B}\):
+\[
+P(X_{t_{n+1}} \in B \mid X_{t_1} = x_1, \ldots, X_{t_n} = x_n) = P(X_{t_{n+1}} \in B \mid X_{t_n} = x_n).
+\]
+\end{definition}
+
+\(\,\)
+
+\begin{theorem}
+If \(E\) is discrete and \(T = \mathbb{N}\), the Markov property in the previous definition is equivalent to the following:
+\[
+\forall ~n \in \mathbb{N}, ~\forall ~x_0, \ldots, x_{n+1} \in E: P(X_0 = x_0, \ldots, X_n = x_n) > 0, \text{ we have }
+\]
+\[
+P(X_{n+1} = x_{n+1} \mid X_0 = x_0, \ldots, X_n = x_n) = P(X_{n+1} = x_{n+1} \mid X_n = x_n).
+\]
+\end{theorem}
+
+\(\,\)
+
+\begin{remark}
+Markov processes, like any stochastic processes, are classified according to the nature of the state space \(E\) and the parameter space \(T\). A special class of Markov processes are \textbf{Markov Chains} (M.C.): Markov processes with \textbf{discrete} state space \(E\).
+
+Thus, a Markov chain can be interpreted as a stochastic process whose evolution can be seen as a series of transitions between fixed values having the property that the probability distribution of the future state, given that the process is currently in a certain state, depends only on that state and not on how the process arrived there. Markov chains are classified as either \textbf{discrete-time} or \textbf{continuous-time}.
+\end{remark}
+
+\chapter{Introduction to stochastic differential equations}\label{sde}
+
+\section{Wiener process}\label{wiener-process}
+
+\begin{definition}[Filtration]
+Let \(X = (X(t), ~ t \in T)\) be a stochastic process defined on the probability space \((\Omega, \mathcal{F}, P)\), with index set \(T = [0, +\infty[\). A family of sub-\(\sigma\)-algebras of \(\mathcal{F}\), such that for \(s \leq t\) we have \(\mathcal{F}_s \subset \mathcal{F}_t\), is called a \textbf{filtration}.
+
+The \textbf{natural filtration} of the process \(X\) is the family\\
+\[
+\left(\mathcal{F}_t = \sigma\big(X_s : 0 \leq s \leq t\big), \; t \in T\right),
+\]\\
+formed by the \(\sigma\)-algebras generated by the process \(X\) up to time \(t\).
+
+A stochastic process \(X = (X(t), ~ t \in T)\) is \textbf{adapted} to the filtration \((\mathcal{F}_t, t \in T)\) if, for every \(t \in T\), the random variable \(X(t)\) is \(\mathcal{F}_t\)-measurable; that is, the inverse images of sets \(B \in \mathcal{B}\) lie in \(\mathcal{F}_t\).
+\end{definition}
+
+\(\,\)
+
+\begin{definition}[Standard Wiener Process (or Brownian Motion)]
+
+A \textbf{standard Wiener process} (or \textbf{Brownian motion}) is a stochastic process \(W = (W_t)_{t \geq 0}\) defined on a probability space \((\Omega, \mathcal{F}, P)\), which satisfies the following properties:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{Initial condition:} \(W_0 = 0\) almost surely, that is,\\
+  \[
+  P(W_0 = 0) = 1;
+  \]
+\item
+  \textbf{Gaussian increments:} For any times \(0 \leq s < t < \infty\), the random variable \(W_t - W_s\) is normally distributed with zero mean and variance \(t - s\), i.e.,\\
+  \[
+  W_t - W_s \sim \mathcal{N}(0, t - s);
+  \]
+\item
+  \textbf{Independent increments:} For every \(n \in \mathbb{N}\) and any increasing sequence of times \(0 \leq t_0 < t_1 < \dots < t_n\), the increments\\
+  \[
+  W_{t_1} - W_{t_0}, \quad W_{t_2} - W_{t_1}, \quad \dots, \quad W_{t_n} - W_{t_{n-1}}
+  \]\\
+  are independent random variables;
+\item
+  \textbf{Continuous paths:} With probability 1, the map \(t \mapsto W_t(\omega)\) is continuous for every \(\omega \in \Omega\), that is,\\
+  \[
+  P\left( W \in C([0, \infty[) \right) = 1,
+  \]\\
+  where \(C([0, \infty[)\) denotes the space of continuous functions on \([0, \infty[\).
+\end{enumerate}
+
+\end{definition}
+
+\(\,\)
+
+\begin{definition}
+
+Consider a function \(f:[0,t] \rightarrow \mathbb{R}\) and a sequence of partitions \(\mathcal{P}_n = \{t_0^n, t_1^n, \ldots, t_n^n\}\) of the interval \([0,t]\), with \(0 = t_0^n < t_1^n < \cdots < t_n^n = t\) for each \(n \in \mathbb{N}\), such that
+\[
+\delta_n = \max_{0 \leq i \leq n-1} |t_{i+1}^n - t_i^n| \to 0 \quad \text{as } n \to +\infty.
+\]
+
+\begin{itemize}
+\item
+  The \textbf{variation} of the function \(f\) on the interval \([0,t]\) is defined by
+  \[
+  V_f([0,t]) = V_f(t) := \lim_{n \to +\infty} \sum_{i=0}^{n-1} |f(t_{i+1}^n) - f(t_i^n)|.
+  \]
+\item
+  The function \(f\) is said to have \textbf{finite variation} on the interval \([0,t]\) if \(V_f(t) < +\infty\).
+\item
+  The function \(f\) is said to have \textbf{bounded variation} on the interval \([0,t]\) if
+  \[
+  \sup_{u \in [0,t]} V_f(u) < k, \quad \text{for some } k > 0.
+  \]
+\item
+  The function \(f\) is said to have \textbf{quadratic variation} on the interval \([0,t]\) if the limit exists and is finite:
+  \[
+  V_f^2(t) := \lim_{n \to +\infty} \sum_{i=0}^{n-1} |f(t_{i+1}^n) - f(t_i^n)|^2.
+  \]
+\end{itemize}
+
+\end{definition}
+
+\(\,\)
+
+In stochastic processes, and particularly in stochastic differential equations, the Wiener process represents the accumulated effect of random disturbances in the evolution of a phenomenon under study. Given the importance of this process, we will present some of its properties.
+
+\(\,\)
+
+\begin{proposition}[Properties of the Wiener Process]
+
+The Wiener process, \(W_t\), has the following properties:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  There exists a separable and continuous version of the process, that is, one with almost surely continuous paths;
+\item
+  For all \(t \geq 0\), \(W_t \sim \mathcal{N}(0,t)\).
+\item
+  The covariance function is given by \(Cov[W_s, W_t] = E[W_s W_t] = \min\{s, t\}\).
+\item
+  \(W_t\) is a time-homogeneous Markov process.
+\item
+  The conditional distribution of \(W_{s+\tau}\) given \(W_s = x\) is Gaussian with mean \(x\) and variance \(\tau\).
+\item
+  \(W_t\) is a martingale with respect to its natural filtration.
+\item
+  The paths of the Wiener process are almost surely non-differentiable.
+\item
+  The paths of the Wiener process are almost surely of infinite variation on any interval.
+\item
+  It has finite quadratic variation on the interval \([a,b]\), equal to \(b-a\).
+\end{enumerate}
+
+\end{proposition}
+
+\(\,\)
+
+\begin{definition}[Dirac delta function]
+
+The \textbf{Dirac delta function} is the generalized function \(\delta(x)\) with the following properties:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \(\delta(x) = 0\) for every \(x \neq 0\);
+\item
+  \(\delta(0) = +\infty\);
+\item
+  \(\displaystyle \int_{-\infty}^{+\infty} \delta(x)\,dx = 1\).
+\end{enumerate}
+
+\end{definition}
+
+\(\,\)
+
+\begin{remark}[White Noise as the Generalised Derivative of the Wiener Process]
+Although the paths of the Wiener process are almost surely continuous but non-differentiable (property 7), and have infinite total variation (property 8), it is possible to interpret its derivative in the \textbf{sense of generalised functions} (or Schwartz distributions).
+
+In this context, the \textbf{generalised derivative} of the Wiener process is defined as
+\[
+\frac{dW_t}{dt} = \xi_t,
+\]
+where \(\xi_t\) denotes a \textbf{generalised stochastic process}, referred to as \textbf{white noise}. This process is not a function in the classical sense, but rather a distribution (or functional) acting on smooth test functions.
+
+White noise \(\xi_t\) is characterised by the following formal properties:
+
+\begin{itemize}
+\tightlist
+\item
+  It is a zero-mean process: \(E(\xi_t) = 0\);
+\item
+  Its autocovariance function is given by
+  \[
+  E(\xi_s \xi_t) = \delta(t - s),
+  \]
+  where \(\delta\) is the Dirac delta function.
+\end{itemize}
+
+This formalism is fundamental in the formulation of stochastic differential equations (SDEs), in which white noise represents an infinitesimal random perturbing force acting continuously over time.
+\end{remark}
+
+\(\,\)
+
+The following image shows two sample paths of a Wiener process. The paths were obtained by numerical simulation, considering independent increments that are normally distributed with zero mean and variance proportional to the time increment.
+
+\pandocbounded{\includegraphics[keepaspectratio]{_main_files/figure-latex/fig-wiener-trajectories-1.pdf}}
+
+\(\,\)
+
+\begin{exercise}
+
+Taking advantage of the properties of the Wiener process, compute:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \(P(W(2.7) > 1.5)\).
+\item
+  \(P(-1.5 < W(2.7) < 1.5)\).
+\item
+  \(P(W(2.7) < 1.5 \mid W(1.8) = 1)\).
+\item
+  \(P(-1.5 < W(2.7) < 1.5 \mid W(1.8) = 1)\).
+\item
+  \(E(W(t) \mid W(s), W(u)) \quad \text{com } 0 < u < s < t\).
+\item
+  \(Var(W(t) \mid W(s), W(u)) \quad \text{com } 0 < u < s < t\).
+\item
+  \(P(W(2.7) > 1.5 \mid W(1.8) = 1,\, W(0.5) = -2)\).
+\item
+  \(E(W(2.7) \mid W(1.8) = 1,\, W(0.5) = -2)\).
+\item
+  \(P(W(1.8) < 1 \mid W(2.7) = 1.5)\).
+\item
+  \(P(W(1.8) = 1 \mid W(2.7) < 1.5)\).
+\item
+  \(P(W(2.7) = 1.5,\, W(1.8) > 1)\).
+\item
+  \(P(W(2.7) < 1.5,\, W(1.8) = 1)\).
+\item
+  \(P(-1 < W(2.7) - W(1.8) < 1.4 \;\wedge\; 0.5 < W(1.6) - W(0.9) < 1.5)\).
+\item
+  \(P(-1 < W(2.7) - W(1.8) < 1.4 \mid W(1.6) - W(0.9) = 1.5)\).
+\end{enumerate}
+
+\end{exercise}
+
+\(\,\)
+
+\begin{exercise}
+\leavevmode
+
+Consider a standard Brownian motion \((B(t),~t\geq 0)\) at the times \(0<u<u+v<u+v+w\), with \(u,v,w>0\). Compute
+\[
+E\big(B(u)B(u+v)B(u+v+w)\big).
+\]
+
+\end{exercise}
+
+\(\,\)
+
+\begin{exercise}
+\leavevmode
+
+Let \((B(t),~t\geq 0)\) with \(B(0)=3\) be a Brownian motion with variance \(\sigma^{2}\). Compute
+\[
+\operatorname{Cov}(B(t),B(s)), \quad t,s \geq 0.
+\]
+
+\end{exercise}
+
+\(\,\)
+
+\begin{exercise}
+\leavevmode
+
+Consider a standard Brownian motion \((B(t),~t\geq 0)\). Determine the covariance function for the following stochastic processes:
+
+\begin{enumerate}
+\def\labelenumi{(\alph{enumi})}
+\item
+  \(U(t)=e^{-t}B(e^{2t})\), for \(t\geq 0\).
+\item
+  \(V(t)=(1-t)B\!\left(\dfrac{t}{1-t}\right)\), for \(0<t<1\).
+\item
+  \(W(t)=tB\!\left(\dfrac{1}{t}\right)\), with \(W(0)=0\).
+\end{enumerate}
+
+\end{exercise}
+
+\(\,\)
+
+\begin{exercise}
+\leavevmode
+
+Consider a standard Brownian motion \((B(t),~t \geq 0)\). For fixed \(t\) and \(M(t)=\max\limits_{0\leq u\leq t}B(u)\), show that:
+
+\begin{enumerate}
+\def\labelenumi{(\alph{enumi})}
+\item
+  \(M(t)\) and \(\left| B(t)\right|\) have the same distribution with p.d.f.
+  \[
+  f_{M(t)}(x)=\frac{2}{\sqrt{t}}\phi (x/\sqrt{t}), \quad x>0.
+  \]
+\item
+  \(E(M(t))=\sqrt{2t/\pi }\).
+\end{enumerate}
+
+\end{exercise}
+
+\(\,\)
+
+\begin{exercise}
+\leavevmode
+
+Let \(B_{1}(t)\) and \(B_{2}(t)\) be two independent Brownian motions, and define \[R(t):=\sqrt{B_{1}(t)^{2}+B_{2}(t)^{2}}, \quad t\geq 0.\]
+Compute \(E(R(t))\).
+
+\end{exercise}
+
+\(\,\)
+
+\begin{exercise}
+\leavevmode
+
+The fluctuations of the share price of a certain company are modelled by a Brownian motion \((A(t),\, t \geq 0)\). Suppose the company goes bankrupt if the market price of its shares reaches the level zero.
+
+If the initial share value is \(A(0) = 5\) monetary units, determine the probability that\ldots{}
+
+\begin{enumerate}
+\def\labelenumi{(\alph{enumi})}
+\item
+  \ldots{} the company goes bankrupt at time \(t = 25\).
+\item
+  \ldots{} the shares are above 10 monetary units at time \(t = 25\).
+\end{enumerate}
+
+\end{exercise}
+
+\(\,\)
+
+\begin{exercise}
+\leavevmode
+
+Consider a Brownian motion with parameters \(\mu=0.1\) and \(\sigma=2\). Compute the probability that the process exits the interval \((a,b]\) at the point \(b\), starting from \(X(0)=0\), for \(b=1,10,100\) and \(a=-b\).
+
+\end{exercise}
+
+\(\,\)
+
+\begin{exercise}
+\leavevmode
+
+The fluctuation of the price of a certain type of shares can be described by a geometric Brownian motion with standard deviation \(\alpha = 0\). Assuming you purchase these shares, what are the chances that your invested capital will double?
+
+\end{exercise}
+
+\section{The Itô integral}\label{itoint}
+
+\begin{remark}
+In what follows, we adopt the following notation for conditional expectation and probability:
+
+\[E(\cdot \mid X_s=x)=E_{s,x}(\cdot)\]
+and
+\[P(\cdot \mid X_s=x)=P_{s,x}(\cdot).\]
+\end{remark}
+
+\(\,\)
+
+\begin{definition}[Diffusion process]
+Let \((\Omega,\mathcal{F},P)\) be a probability space and let \((X_t, t \geq 0)\) be a stochastic process defined on that space. We say that \(X_t\) is a \textbf{diffusion process} if it satisfies the following properties:
+
+\begin{enumerate}
+\def\labelenumi{\roman{enumi})}
+\item
+  \(X_t\) is a Markov process;
+\item
+  The trajectories of \(X_t\) are almost surely continuous;
+\item
+  \(X_t \in L^2\), that is, \(E[X_t^2] < +\infty\);
+\item
+  For every \(\varepsilon > 0\),
+  \[
+  \lim_{\Delta \to 0^+} \frac{P_{s,x}(|X_{s+\Delta} - X_s| > \varepsilon)}{\Delta} = 0;
+  \]
+\item
+  The limit exists and is finite:
+  \[
+  \lim_{\Delta \to 0^+} E_{s,x}\left[\frac{X_{s+\Delta} - X_s}{\Delta}\right] = a(s,x);
+  \]
+\item
+  The limit exists and is finite:
+  \[
+  \lim_{\Delta \to 0^+} E_{s,x}\left[\frac{(X_{s+\Delta} - X_s)^2}{\Delta}\right] = b(s,x).
+  \]
+\end{enumerate}
+
+If the functions \(a(s,x)\) and \(b(s,x)\) are independent of the time variable \(s\), the process is called \textbf{homogeneous}.
+
+The functions \(a(s,x)\) and \(b(s,x)\) are called, respectively, the \textbf{drift coefficient} (or \textbf{first infinitesimal moment}) and the \textbf{diffusion coefficient} (or \textbf{second infinitesimal moment}).
+
+The drift coefficient, \(a(s,x)\), measures the rate of change of the process's mean at time \(s\), whereas the diffusion coefficient, \(b(s,x)\), measures the intensity of the process's fluctuations --- in other words, the rate of change of the process's variance at time \(s\).
+\end{definition}
+
+\(\,\)
+
+\begin{exercise}
+\leavevmode
+
+\begin{enumerate}
+\def\labelenumi{(\roman{enumi})}
+\item
+  Show that the Wiener process \(W_t\) is a homogeneous diffusion process with zero drift coefficient and unit diffusion coefficient.
+\item
+  Show that \(X_t = x_0 + \sigma W_t\), with constants \(x_0\) and \(\sigma\), i.e.~a (non-standard) Wiener process, is a homogeneous diffusion process with zero drift coefficient and diffusion coefficient \(\sigma^2\).
+\item
+  Show that \(Z_t = x_0 + \mu t + \sigma W_t\), with constants \(x_0\), \(\mu\) and \(\sigma\), known as Brownian motion with drift, is a homogeneous diffusion process with drift coefficient \(\mu\) and diffusion coefficient \(\sigma^2\).
+\end{enumerate}
+
+\end{exercise}
+
+\(\,\)
+
+\begin{theorem}
+
+Let \(X_t\) be a diffusion process, as defined above, with transition density function \(p(t, y \mid s, x)\), continuous in \(s\), and with first and second partial derivatives in \(x\) finite and continuous in \(s\). Under these conditions the following hold:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{Forward Kolmogorov equation} (or \textbf{Fokker--Planck equation}):
+  \[
+  \frac{\partial p}{\partial t} + \frac{\partial\big(a(s,x)\,p\big)}{\partial y} - \frac{1}{2} \frac{\partial^2\big(b(s,x)\,p\big)}{\partial y^2} = 0,
+  \]
+  with initial condition
+  \[
+  \lim_{t \downarrow s} p(t, y \mid s, x) = \delta(x - y),
+  \]
+  where \(\delta\) denotes the Dirac delta function, and \((s, x)\) is fixed;
+\item
+  \textbf{Backward Kolmogorov equation}:
+  \[
+  \frac{\partial p}{\partial s} + a(s,x)\,\frac{\partial p}{\partial x} + \frac{1}{2}\,b(s,x)\,\frac{\partial^2 p}{\partial x^2} = 0,
+  \]
+  with initial condition
+  \[
+  \lim_{t \uparrow s} p(t, y \mid s, x) = \delta(x - y),
+  \]
+  where \(\delta\) denotes the Dirac delta function, and \((t, y)\) is fixed.
+\end{enumerate}
+
+\end{theorem}
+
+\(\,\)
+
+Consider the point \(X(0)=X_0\in\mathbb{R}\) and the following Cauchy problem induced by an ordinary differential equation:
+
+\begin{equation}
+\label{eq:odeex}
+\begin{cases}
+dX(t)=f(X(t))\,dt, & \text{for } t>0,\\
+X(0)=X_0,
+\end{cases}
+\end{equation}
+
+where \(f:\mathbb{R}\to\mathbb{R}\) is a differentiable function and \(X:\mathbb{R}_0^+\to\mathbb{R}\) is the solution of \eqref{eq:odeex}.
+
+If we interpret \(X(t)\) as the trajectory of a particle, then \(dX(t)/dt\) represents its velocity. It is natural to admit that this velocity may present small oscillations not explained by the function \(f\); in other words, the system described by equation \eqref{eq:odeex} does not incorporate the random effects that environmental fluctuations induce on the trajectory of \(X\). Hence it is necessary to add a \emph{noise} term to problem \eqref{eq:odeex} so as to reflect the influence of these fluctuations on the system dynamics:
+
+\begin{equation}
+\label{eq:sdeex}
+\begin{cases}
+dX(t)=f(X(t))\,dt + g(X(t))\,\xi(t)\,dt, & \text{for } t>0,\\
+X(0)=X_0,
+\end{cases}
+\end{equation}
+
+where \(g(\cdot)\), which measures the intensity of the environmental fluctuations, is a function depending on \(X(t)\).
+
+Considering that \(dW(t)=\xi(t)\,dt\), system \eqref{eq:sdeex} can be rewritten as:
+
+\[
+\begin{cases}
+dX(t)=f(X(t))\,dt + g(X(t))\,dW(t),\\
+X(0)=X_0,
+\end{cases}
+\]
+
+which represents a \textbf{stochastic differential equation (SDE)}. The solution of this system is formally given by
+
+\begin{equation}
+\label{eq:sdesol}
+X(t)=X_0 + \int_0^t f(X(s))\,ds + \int_0^t g(X(s))\,dW(s), \quad t>0,
+\end{equation}
+
+where the first integral is a Riemann--Stieltjes integral. However, the second integral \textbf{does not exist} in that sense, since the trajectories of the Wiener process are, almost surely, of unbounded variation on \([0,t]\).
+
+Nevertheless, because the Wiener process has finite quadratic variation, it is possible to define the second integral by resorting to the \textbf{stochastic integral}.
+
+Note that, as before, the explicit dependence on \(\omega\) has been omitted from the notation of \(X(t)\).
+
+We will now show how to obtain the solution \eqref{eq:sdesol} and how to define the stochastic integral
+\[
+\int_0^t g(X(s))\,dW(s).
+\]
+
+\(\,\)
+
+Suppose we wish to compute the following integral:
+
+\[
+\int_0^t W(u)\,dW(u).
+\]
+
+If we apply the usual calculus rules, we obtain the formal solution
+
+\begin{equation}
+\label{eq:solintw}
+\frac{1}{2}W^2(t).
+\end{equation}
+
+Let us check whether this solution is correct.
+
+Let \(f:[0,t]\to\mathbb{R}^+\) be given by \(f(u)=W(u)\), and let \(\mathcal{P}_n=\{t_0^n,t_1^n,\dots,t_n^n\}\), \(n=1,2,\dots\), be partitions of \([0,t]\) with
+\[
+0=t_0^n < t_1^n < \dots < t_n^n = t \ge 0,
+\]
+such that the mesh
+\[
+\delta_n = \max_{0\le i\le n-1} |t_{i+1}^n - t_i^n|
+\]
+satisfies \(\delta_n \to 0\) as \(n\to+\infty\).
+
+Consider the Riemann--Stieltjes approximating sums for the integral \(\int_0^t f(u)\,dW(u)\):
+\[
+\sum_{i=0}^{n-1} W(\xi_i^n)\big(W(t_{i+1}^n)-W(t_i^n)\big),
+\]
+with \(\xi_i^n\in[t_i^n,t_{i+1}^n]\), and use limits in mean square as \(n\to+\infty\) to define the integral when possible.
+
+Consider the particular choice \(\xi_i^n = (1-\lambda)t_i^n + \lambda t_{i+1}^n\), and define the Riemann--Stieltjes sums
+
+\[
+S_\lambda(W;t) = \sum_{i=0}^{n-1} W(\xi_i^n)\big(W(t_{i+1}^n)-W(t_i^n)\big).
+\]
+
+One easily verifies that, for fixed \(\lambda\), the mean-square limit of these sums, as \(n\to+\infty\), is
+
+\[
+\frac{W^2(t)}{2} + \Big(\lambda - \frac{1}{2}\Big)t.
+\]
+
+Indeed,
+
+\[
+E\Big[\Big(S_\lambda(W;t) - \frac{W^2(t)}{2} - \big(\lambda - \tfrac{1}{2}\big)t\Big)^2\Big] \longrightarrow 0.
+\]
+
+This limit depends on the choice of \(\lambda\) and therefore on the intermediate point \(\xi_i\in[t_i,t_{i+1}]\). Hence the integral does \textbf{not} exist in the Riemann--Stieltjes sense, because there is no common limit for all choices of intermediate points.
+
+By fixing \(\lambda=0\) (choice of the left endpoint \(\xi_i=t_i\)), we obtain
+
+\[
+\int_0^t W(u)\,dW(u) = \frac{1}{2}W^2(t) - \frac{1}{2}t,
+\]
+
+which differs from \eqref{eq:solintw}. Indeed, different values of \(\lambda\) produce different integrals: for example, with \(\lambda=\tfrac{1}{2}\) (midpoint rule) one obtains
+
+\[
+\int_0^t W(u)\,dW(u) = \frac{1}{2}W^2(t).
+\]
+
+The dependence on \(\lambda\) raises the natural question: \textbf{which value of \(\lambda\) should we choose?}
+
+Choosing \(\xi_i=t_i\) (left endpoint) allows us to define integrals of functions far more general than the Wiener process alone. This leads to integrals of the type
+
+\[
+\int_0^t G(s)\,dW(s),
+\]
+
+where \(G\) belongs to a large class of \textbf{non-anticipative} functions. Later we will make this precise.
+
+As noted, different choices of \(\lambda\) give different integrals. Thus:
+
+\begin{enumerate}
+\def\labelenumi{(\roman{enumi})}
+\item
+  \(\lambda=0\) (left endpoint) yields the \textbf{Itô integral};
+\item
+  \(\lambda=\tfrac{1}{2}\) (midpoint) yields the \textbf{Stratonovich integral}.
+\end{enumerate}
+
+\(\,\)
+
+We now focus on the Itô integral. We begin by introducing several definitions and important results.
+
+\(\,\)
+
+\begin{definition}
+
+Let \(W(t),\ t\ge 0\), be a standard Wiener process defined on a probability space \((\Omega,\mathcal{F},P)\).
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  The \textbf{natural filtration of the Wiener process up to time} \(s>0\) is the \(\sigma\)-algebra
+  \[
+  \mathcal{M}_s = \sigma\big(W(u): 0\le u\le s\big);
+  \]
+\item
+  The \textbf{\(\sigma\)-algebra of future increments of the Wiener process} is
+  \[
+  \mathcal{M}_s^+ = \sigma\big(W(u)-W(s): u\ge s\big);
+  \]
+\item
+  A family \(\{\mathcal{A}_s: 0\le s\le t\}\) of \(\sigma\)-algebras is called a \textbf{non-anticipative filtration} with respect to \(W(s)\) if:
+
+  \begin{itemize}
+  \item
+    \(\mathcal{A}_s \supset \mathcal{M}_s\) for all \(0\le s\le t\);
+  \item
+    \(\mathcal{A}_s\) is independent of \(\mathcal{M}_s^+\) for every \(s\ge 0\).
+  \end{itemize}
+\end{enumerate}
+
+\end{definition}
+
+Informally, \(\mathcal{A}_s\) contains all the information about the process available up to time \(s\).
+
+Usually the chosen non-anticipative filtration \(\mathcal{A}_s\) coincides with the natural filtration \(\mathcal{M}_s\), unless extra information must be included (for example, to incorporate an initial condition); in that case one works with a larger filtration provided it remains non-anticipative.
+
+\(\,\)
+
+\begin{definition}[Non-anticipative process]
+A stochastic process \(G(t)\) is called \textbf{non-anticipative} with respect to the filtration \(\mathcal{A}_t\) if \(G(t)\) is \(\mathcal{A}_t\)-measurable for every \(t\ge 0\) (i.e.~\(G(t)\) depends only on information available up to time \(t\)).
+\end{definition}
+
+\(\,\)
+
+Given these definitions, we can define the Itô integral for a special class of non-anticipative functions: the \textbf{step functions} (simple processes). Note: to define the Itô integral it is not enough that \(G\) be non-anticipative --- we also require that \(G(t,\omega)\) be \emph{jointly measurable}.
+
+\(\,\)
+
+\begin{definition}[Hilbert space]
+
+The \textbf{Hilbert space} on the interval \([0,t]\), denoted \(H^2[0,t]\), is the space of functions
+\[
+G:[0,t]\times\Omega\to\mathbb{R}
+\]
+such that:
+
+\begin{itemize}
+\item
+  \(G\) is \emph{jointly measurable} with respect to Lebesgue measure \(l\) on \([0,t]\) and probability measure \(P\);
+\item
+  \(G\) is \textbf{non-anticipative};
+\item
+  \(\displaystyle \int_0^t E\big(G^2(u,\omega)\big)\,du < +\infty\).
+\end{itemize}
+
+\end{definition}
+
+\(\,\)
+
+\begin{definition}[Step function]
+A function \(G\in H^2[0,t]\) is called a \textbf{step function} if there exists a partition \(0=t_0<t_1<\dots<t_n=t\) of \([0,t]\) such that
+
+\[
+G(u)=G(t_i),\qquad t_i\le u < t_{i+1},\qquad i=0,\dots,n-1,
+\]
+
+with each \(G(t_i)\) being \(\mathcal{A}_{t_i}\)-measurable (because \(G\) is non-anticipative).
+
+We denote the space of step functions in \(H^2[0,t]\) by \(H_E^2[0,t]\).
+\end{definition}
+
+\(\,\)
+
+\begin{definition}[Itô integral for step functions]
+Let \(G\) be a step function in \(H_E^2[0,t]\) with partition \(0=t_0<\dots<t_n=t\). The Itô integral of \(G\) over \([0,t]\) is defined by
+
+\[
+\int_0^t G(s)\,dW(s) = \sum_{i=0}^{n-1} G(t_i)\big(W(t_{i+1})-W(t_i)\big).
+\]
+\end{definition}
+
+\(\,\)
+
+\begin{theorem}[Properties of the Itô integral]
+
+Let \(F\) and \(G\) be in \(H_E^2[0,t]\), and let \(\alpha,\beta\in\mathbb{R}\). Then:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{Linearity}
+  \[
+  \int_0^t \big(\alpha F(s) + \beta G(s)\big)\,dW(s)
+  = \alpha\int_0^t F(s)\,dW(s) + \beta\int_0^t G(s)\,dW(s).
+  \]
+\item
+  \textbf{Zero expectation}
+  \[
+  E\Big[\int_0^t F(s)\,dW(s)\Big] = 0.
+  \]
+\item
+  \textbf{Itô isometry}
+  \[
+  E\Big[\big(\int_0^t F(s)\,dW(s)\big)^2\Big] = E\Big[\int_0^t F(s)^2\,ds\Big] = \int_0^t E[F(s)^2]\,ds.
+  \]
+\end{enumerate}
+
+\end{theorem}
+
+\(\,\)
+
+We have thus defined the Itô integral for step functions in \(H_E^2[0,t]\). We now extend the integral to general functions in \(H^2[0,t]\) via approximating sequences of step functions.
+
+\(\,\)
+
+\begin{theorem}[Mean-square approximation]
+Let \(G\in H^2[0,t]\). Then there exists a sequence of bounded step functions \(G_n\in H_E^2[0,t]\) such that
+
+\[
+E\Big[\int_0^t |G(s)-G_n(s)|^2\,ds\Big] \xrightarrow{n\to\infty} 0.
+\]
+\end{theorem}
+
+\(\,\)
+
+\begin{definition}
+Let \(G\) and \(G_n\) be as in the theorem above. The \textbf{Itô integral} of \(G\) over \([0,t]\) is defined by the mean-square limit
+
+\[
+\int_0^t G(s)\,dW(s) = \lim_{n\to\infty} \int_0^t G_n(s)\,dW(s),
+\]
+
+where the limit is taken in mean square.
+\end{definition}
+
+\(\,\)
+
+\begin{theorem}
+
+Let \(F,G\in H^2[0,t]\) and \(\alpha,\beta\in\mathbb{R}\). Then:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{Linearity}
+  \[
+  \int_0^t \big(\alpha F(s) + \beta G(s)\big)\,dW(s)
+  =
+  \alpha\int_0^t F(s)\,dW(s) + \beta\int_0^t G(s)\,dW(s).
+  \]
+\item
+  \textbf{Zero expectation}
+  \[
+  E\Big[\int_0^t F(s)\,dW(s)\Big] = 0.
+  \]
+\item
+  \textbf{Itô isometry}
+  \[
+  E\Big[\big(\int_0^t F(s)\,dW(s)\big)^2\Big] = E\Big[\int_0^t F(s)^2\,ds\Big] = \int_0^t E[F(s)^2]\,ds.
+  \]
+\item
+  \textbf{Covariance}
+  \[
+  E\Big[\int_0^t F(s)\,dW(s)\ \int_0^t G(s)\,dW(s)\Big]
+  = E\Big[\int_0^t F(s)G(s)\,ds\Big].
+  \]
+\item
+  \textbf{Normal distribution in the deterministic case} (if \(G(s)\) is deterministic):
+  \[
+  \int_0^t G(s)\,dW(s) \sim \mathcal{N}\Big(0,\int_0^t G^2(s)\,ds\Big).
+  \]
+\end{enumerate}
+
+\end{theorem}
+
+\(\,\)
+
+The Itô integral for functions in \(H^2[0,t]\) can be studied as a function of its upper limit, yielding an \textbf{indefinite integral}. The proofs of the properties above lie beyond the scope of this course.
+
+\(\,\)
+
+\begin{definition}[Indefinite Itô integral]
+Let \(G\in H^2[0,d]\) and consider \(t\in[0,d]\). The indefinite Itô integral is the stochastic process
+
+\[
+Z(t) = \int_0^t G(s)\,dW(s) = \int_0^d G(s)\,I_{[0,t]}(s)\,dW(s).
+\]
+\end{definition}
+
+\(\,\)
+
+\begin{theorem}
+
+Let \(Z(t)\) be the process defined above. Then:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \(Z(t)\) is a martingale with respect to the filtration \(\mathcal{A}_t\);
+\item
+  \(Z(t)\) has a continuous version (i.e.~it has almost surely continuous paths);
+\item
+  \(Z(t)\) has uncorrelated increments.
+\end{enumerate}
+
+\end{theorem}
+
+\(\,\)
+
+The classes of functions introduced so far are fairly simple. In practice one often needs to consider Itô integrals where \(G\) belongs not only to \(H^2[0,t]\) but to the larger space \(M^2[0,t]\).
+
+\(\,\)
+
+\begin{definition}
+
+We say that \(G(s,\omega)\) belongs to the space \(M^2[0,t]\) if:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  It is \textbf{jointly measurable};
+\item
+  It is \textbf{non-anticipative} with respect to the filtration \(\mathcal{A}_s\);
+\item
+  The integral
+  \[
+  \int_0^t G^2(s)\,ds
+  \]
+  exists and is \textbf{finite almost surely}.
+\end{enumerate}
+
+\end{definition}
+
+\(\,\)
+
+Note that the requirement \(\int_0^t G^2(s)\,ds < +\infty\) is weaker than the condition for the space \(H^2\). Hence
+
+\[
+H^2[0,t] \subset M^2[0,t].
+\]
+
+The extension of the Itô integral to functions in \(M^2[0,t]\) is made similarly by approximating with step functions in \(H_E^2[0,t]\), but with a weaker mode of convergence.
+
+\(\,\)
+
+\begin{theorem}
+Let \(G\in M^2[0,t]\). Then there exists a sequence of bounded step functions \(G_n\in H_E^2[0,t]\) such that
+
+\[
+\int_0^t (G(s)-G_n(s))^2\,ds \longrightarrow 0 \quad \text{almost surely},\quad n\to\infty.
+\]
+\end{theorem}
+
+\(\,\)
+
+\begin{definition}
+Let \(G\) and \(G_n\) be as in the theorem above. The Itô integral of \(G\) over \([0,t]\) is defined by
+
+\[
+\int_0^t G(s)\,dW(s) = P\mbox{-}\lim_{n\to\infty} \int_0^t G_n(s)\,dW(s),
+\]
+
+where the limit is taken \textbf{in probability}.
+\end{definition}
+
+\(\,\)
+
+\section{Itô calculus and stochastic differential equations}\label{itocalc-sde}
+
+Having presented the Itô integral, we now introduce the \textbf{calculus rules} for these integrals: Itô calculus.
+
+Itô calculus departs from classical calculus due to an additional differentiation rule --- the \textbf{Itô chain rule}. We next define an \textbf{Itô process} and state \textbf{Itô's theorem}, the cornerstone of stochastic differential calculus.
+
+\(\,\)
+
+\begin{definition}[Itô process]
+Let:
+
+\begin{itemize}
+\item
+  \((W(t),t\ge 0)\) be a Wiener process;
+\item
+  \(X_0\) be an \(\mathcal{A}_0\)-measurable random variable;
+\item
+  \(F\) be a function jointly measurable, adapted to the filtration \(\mathcal{A}_s\) and such that
+  \[
+  \int_0^d |F(s)|\,ds < +\infty \quad \text{almost surely};
+  \]
+\item
+  \(G\in M^2[0,d]\).
+\end{itemize}
+
+The \textbf{Itô process} on the interval \(t\in[0,d]\) is defined by
+
+\[
+X(t) = X_0 + \int_0^t F(s)\,ds + \int_0^t G(s)\,dW(s).
+\]
+
+In differential form:
+
+\[
+dX(t) = F(t)\,dt + G(t)\,dW(t).
+\]
+\end{definition}
+
+\(\,\)
+
+\begin{theorem}[Itô's theorem]
+Let \(X(t,\omega)\) be an Itô process as defined previously, and let \(Y(t) = h(t,X(t))\), where \(h\), \(h_{t}(t,x)\) and \(h_{xx}(t,x)\) are continuous functions. Then:
+
+\begin{enumerate}
+\def\labelenumi{(\roman{enumi})}
+\item
+  \(Y(t) = Y(t,\omega)\) is an Itô process with initial condition \(Y_0 = h(0, X_0)\);
+\item
+  the differential form of \(Y(t)\) is given by the \textbf{Itô chain rule}:
+\end{enumerate}
+
+\[
+dY_t = \left(\frac{\partial h(t,X_t)}{\partial t} + \frac{\partial h(t,X_t)}{\partial x} F(t) + \frac{1}{2} \frac{\partial^2 h(t,X_t)}{\partial x^2} G^2(t)\right) dt + \frac{\partial h(t,X_t)}{\partial x} G(t) \, dW_t;
+\]
+
+\begin{enumerate}
+\def\labelenumi{(\roman{enumi})}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  the integral form of \(Y(t)\) is
+\end{enumerate}
+
+\[
+Y_t = Y_0 + \int_{0}^{t} \left( \frac{\partial h(s,X_s)}{\partial s} + \frac{\partial h(s,X_s)}{\partial x} F(s) + \frac{1}{2} \frac{\partial^2 h(s,X_s)}{\partial x^2} G^2(s) \right) ds + \int_{0}^{t} \frac{\partial h(s,X_s)}{\partial x} G(s) \, dW_s.
+\]
+\end{theorem}
+
+\(\,\)
+
+Having presented the definitions, properties and theorems related to Itô calculus, we can now address the solution of stochastic differential equations, i.e.~the computation of their solutions. We begin with the definition of a solution of an Itô stochastic differential equation.
+
+In what follows we consider:
+
+\begin{itemize}
+\item
+  \(W = (W_t,\, t \ge 0)\) is a Wiener process;
+\item
+  \(X_0\) is a random variable independent of the Wiener process;
+\item
+  \(\mathcal{A}_t = \mathcal{F}(X_0, W_s),\ 0 \le s \le t\);
+\item
+  \(F, G\) are two jointly measurable functions defined on \([0,T]\), with \(T>0\).
+\end{itemize}
+
+\(\,\)
+
+\begin{definition}[Solution of an Itô SDE]
+
+A stochastic process \(X_t\) is a solution of the Itô stochastic differential equation
+
+\[
+\label{sol_ito}
+\begin{cases}
+dX_t = F(X_t, t) \, dt + G(X_t, t) \, dW_t, & \quad 0 \le t \le T,\\[4pt]
+X(0) = X_0, &
+\end{cases}
+\]
+
+if it satisfies the following conditions:
+
+\begin{enumerate}
+\def\labelenumi{(\roman{enumi})}
+\item
+  \(X\) is \(\mathcal{F}_t\)-measurable;
+\item
+  \(F\) is non-anticipative and
+  \[
+  \int_{0}^{T} F(X_s, s) \, ds < +\infty;
+  \]
+\item
+  \(G\) is non-anticipative and
+  \[
+  \int_{0}^{T} G^2(X_s, s) \, ds < +\infty;
+  \]
+\item
+  \[
+  X_t = X_0 + \int_{0}^{t} F(X_s, s) \, ds + \int_{0}^{t} G(X_s, s) \, dW_s 
+  \quad \text{almost surely}, \quad \forall t \in [0,T].
+  \]
+\end{enumerate}
+
+\end{definition}
+
+\(\,\)
+
+\begin{theorem}[Existence and uniqueness of solutions for Itô SDEs]
+Let \(F:\mathbb{R}\times[0,T]\to\mathbb{R}\) and \(G:\mathbb{R}\times[0,T]\to\mathbb{R}\) be continuous functions satisfying:
+
+\begin{enumerate}
+\def\labelenumi{(\roman{enumi})}
+\item
+  \(|F(x,t) - F(y,t)| \le L|x-y|\) and \(|G(x,t) - G(y,t)| \le L|x-y|\) for all \(t\in[0,T]\) and \(x,y\in\mathbb{R}\);
+\item
+  \(|F(x,t)| \le L(1+|x|)\) and \(|G(x,t)| \le L(1+|x|)\) for all \(t\in[0,T]\) and \(x\in\mathbb{R}\),
+\end{enumerate}
+
+where \(L>0\) is a constant.
+
+Let \(X_0\) be a random variable independent of the future increments of the Wiener process such that
+
+\[
+E\big(|X_0|^2\big) < +\infty.
+\]
+
+Under these conditions there exists a unique solution \(X_t\) to the Itô SDE
+
+\begin{equation}
+\label{eq:sol-ito}
+\begin{cases}
+dX_t = F(X_t,t)\,dt + G(X_t,t)\,dW_t, & 0 \le t \le T,\\[4pt]
+X(0) = X_0.
+\end{cases}
+\end{equation}
+\end{theorem}
+
+\(\,\)
+
+This solution is a Markov process and, if \(F\) and \(G\) are continuous in \(t\), it is also a diffusion process.
+
+Uniqueness means that if \(X_t\) and \(Y_t\) are solutions of \eqref{eq:sol-ito}, then
+\[
+P\big(X_t = Y_t\big) = 1,\qquad \forall t\in[0,T].
+\]
+
+The conditions on \(F\) and \(G\) are respectively a Lipschitz condition and a linear growth bound.
+
+The proof uses Grönwall's lemma and can be found in any good textbook on stochastic differential equations.
+
+\(\,\)
+
+\begin{exercise}
+Show that \(d(tW(t))\) and use the result to prove that
+\[
+\int_0^t s \, dW(s) = tW(t) - \int_0^t W(s)\, ds.
+\]
+\end{exercise}
+
+\(\,\)
+
+\begin{exercise}
+Show that the equation \(dY(t) = Y(t)\, dW(t)\), with \(Y(0)=1\), has solution
+\[
+Y(t) = \exp\!\left(W(t) - \tfrac{t}{2}\right), \quad t \ge 0.
+\]
+\end{exercise}
+
+\(\,\)
+
+\begin{exercise}
+Consider the SDE
+\[
+dY(t) = \mu\,dt + \sigma\,dW(t), \qquad Y(0) = y_0.
+\]
+Show that its solution is
+\[
+Y(t) = y_0 + \mu t + \sigma W(t).
+\]
+\textbf{Hint:} this SDE is linear with constant coefficients; solve it by direct integration.
+\end{exercise}
+
+\(\,\)
+
+\begin{exercise}
+Consider the Ornstein--Uhlenbeck model:
+\[
+dX(t) = -\theta X(t)\,dt + \sigma\,dW(t), \qquad X(0)=x_0.
+\]
+Show that the solution is
+\[
+X(t) = x_0 e^{-\theta t} + \sigma \int_0^t e^{-\theta (t-s)}\,dW(s).
+\]
+\textbf{Hint:} apply the change of variable \(Z(t) = e^{\theta t} X(t)\) and solve the resulting SDE.
+\end{exercise}
+
+\(\,\)
+
+\begin{exercise}
+Consider the Vasicek model:
+\[
+dY(t) = b(A - Y(t))\,dt + \sigma\,dW(t), \qquad Y(0)=y_0.
+\]
+Show that the solution is
+\[
+Y(t) = A + (y_0 - A)e^{-bt} + \sigma \int_0^t e^{-b(t-s)}\,dW(s).
+\]
+\textbf{Hint:} apply the change of variable \(Z(t) = Y(t) - A\) and solve the resulting SDE.
+\end{exercise}
+
+\(\,\)
+
+\begin{exercise}
+Consider the Gompertz (Fox) model:
+\[
+dX(t) = rX(t)\big(\ln K - \ln X(t)\big)\,dt + \sigma X(t)\,dW(t), \qquad X(0)=x_0.
+\]
+Show that the solution is
+\[
+X(t)=\exp\!\left(
+   \ln K 
+   + e^{-r t}\big(\ln x_0-\ln K\big) 
+   - \frac{\sigma^2}{2r}\big(1-e^{-r t}\big) 
+   + \sigma\int_0^t e^{-r (t-s)}\,dW_s
+\right).
+\]
+\textbf{Hint:} apply the change of variable \(Z(t)=\ln X(t)\) and solve the resulting SDE.
+\end{exercise}
+
+\(\,\)
+
+\begin{exercise}
+Consider the Black--Scholes model:
+\[
+dY(t) = rY(t)\,dt + \sigma Y(t)\,dW(t), \qquad Y(0)=y_0.
+\]
+Show that the solution is
+\[
+Y(t) = y_0\, e^{\left(r - \tfrac{\sigma^2}{2}\right)t + \sigma W(t)}.
+\]
+\textbf{Hint:} apply the change of variable \(Z(t) = \ln Y(t)\) and solve the resulting SDE.
+\end{exercise}
+
+\(\,\)
+
+\begin{exercise}
+Let \(X(t)\) be the price of a share at time \(t\ge0\) following a Black--Scholes model with \(X(0)=\$52{,}800\), \(r=0.312\) per quarter and \(\sigma^2 = 0.087\) per quarter. Compute:
+
+\begin{enumerate}
+\def\labelenumi{(\alph{enumi})}
+\item
+  \(P\big(X(2\ \text{quarters}) > \$70{,}000 \mid X(1\ \text{quarter}) = \$60{,}500\big)\).
+\item
+  \(E\big(X(1\ \text{quarter})\big)\).
+\item
+  \(P\big(\$55{,}000 \le X(1\ \text{quarter}) \le \$65{,}000\big)\).
+\item
+  \(\operatorname{Var}\big(X(1\ \text{quarter})\big)\).
+\item
+  \(E\big(X(2\ \text{quarters}) \mid X(0.5\ \text{quarter}) = \$54{,}200,\ X(1\ \text{quarter}) = \$60{,}500\big)\).
+\item
+  \(P\big(X(2\ \text{quarters}) > \$70{,}000 \mid X(0.5\ \text{quarter}) = \$54{,}200,\ X(1\ \text{quarter}) = \$60{,}500\big)\).
+\item
+  \(\operatorname{Var}\big(X(2\ \text{quarters}) \mid X(1\ \text{quarter}) = \$60{,}500\big)\).
+\item
+  \(E\big(X(2\ \text{quarters}) \mid X(1\ \text{quarter}) = \$60{,}500\big)\).
+\end{enumerate}
+
+\textbf{Hint:} use that \(X(t) = X(0)\,e^{Z(t)}\) with \(Z(t)\) Gaussian. Hence
+\[
+X^2(t) = X(0)^2 e^{2Z(t)}
+\]
+and
+\[
+E\big(X^2(t)\big) = X(0)^2 E\!\big(e^{2Z(t)}\big) = X(0)^2 \exp\!\big( E(2Z(t)) + \tfrac{1}{2}\operatorname{Var}(2Z(t)) \big).
+\]
+\end{exercise}
+
+\(\,\)
+
+\begin{exercise}
+Consider the inverse log-normal model:
+\[
+dY(t) = -\tfrac{\sigma^2}{2} Y(t)\,dt + \sigma Y(t)\,dW(t), \qquad Y(0)=y_0.
+\]
+Show that the solution is
+\[
+Y(t) = y_0\,e^{\sigma W(t)}.
+\]
+\textbf{Hint:} apply the change of variable \(Z(t) = \ln Y(t)\) and solve the resulting SDE.
+\end{exercise}
+
+\(\,\)
+
+\begin{exercise}
+Consider the Gompertz model with a limiting parameter:
+\[
+dX(t)=(X(t)-\gamma)\big(\alpha - \beta\ln(X(t)-\gamma)\big)dt + \sigma (X(t)-\gamma)dW(t), \qquad X(0)=x_0.
+\]
+Show that the solution is
+\[
+X_t=\gamma+\exp\left\{e^{-\beta t}\left(\ln(x_0-\gamma)+\frac{1}{\beta}\left(\alpha-\frac{\sigma^2}{2}\right)(e^{\beta t}-1)\right)+\sigma e^{-\beta t}\int_{0}^{t}{e^{\beta s}}dW_s\right\}.
+\]
+\textbf{Hint:} apply the change of variable \(Y(t)=\ln(X(t)-\gamma)\) and solve the resulting SDE.
+\end{exercise}
+
+\(\,\)
+
+\chapter{Bibliography}\label{bibliography}
+
+\begin{itemize}
+\tightlist
+\item
+  Taylor, H. M., Karlin, S. (1998) An Introduction to Stochastic Modeling (3rd Edition), Academic Press, New York.
+\end{itemize}
+
+\begin{center}\includegraphics[width=0.25\linewidth]{figures/book2} \end{center}
+
+\begin{itemize}
+\tightlist
+\item
+  Øksendal, B. (2003) Stochastic Differential Equations: An Introduction with Applications (6ª ed.). Heidelberg: Springer. ISBN 978-3-540-04758-2.
+\end{itemize}
+
+\begin{center}\includegraphics[width=0.25\linewidth]{figures/book1} \end{center}
+
+\vfill
+
+\(\,\)
+
+\(\,\)
+
+\(\,\)
+
+\(\,\)
+
+\textbf{All rights reserved. Reproduction, copying, distribution, public communication, transformation or any other form of use, in whole or in part, of the contents of this site, including text, code and images, without prior written authorisation from the author is strictly prohibited. Any unauthorised use constitutes a breach of copyright and may give rise to civil and criminal liability under applicable law.}
+
+2025 \textbar{} Nuno M. Brites \textbar{}
+\href{mailto:nbrites@iseg.ulisboa.pt}{\nolinkurl{nbrites@iseg.ulisboa.pt}}
+
+\end{document}

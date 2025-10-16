@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>2 Introduction to stochastic differential equations | Advanced Mathematical Economics (Part II)</title>
+  <meta name="description" content="2 Introduction to stochastic differential equations | Advanced Mathematical Economics (Part II)" />
+  <meta name="generator" content="bookdown 0.44 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="2 Introduction to stochastic differential equations | Advanced Mathematical Economics (Part II)" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="2 Introduction to stochastic differential equations | Advanced Mathematical Economics (Part II)" />
+  
+  
+  
+
+<meta name="author" content="Nuno M. Brites" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="intro-stoch-proc.html"/>
+<link rel="next" href="bibliography.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="index.html#section" id="toc-section"></a></li>
+<li class="chapter" data-level="1" data-path="intro-stoch-proc.html"><a href="intro-stoch-proc.html"><i class="fa fa-check"></i><b>1</b> Introduction to Stochastic Processes</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="intro-stoch-proc.html"><a href="intro-stoch-proc.html#conceitos-fundamentais"><i class="fa fa-check"></i><b>1.1</b> Fundamental Concepts</a></li>
+<li class="chapter" data-level="1.2" data-path="intro-stoch-proc.html"><a href="intro-stoch-proc.html#tipos-classicos-de-processos-estocasticos"><i class="fa fa-check"></i><b>1.2</b> Classical types of stochastic processes</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="intro-stoch-proc.html"><a href="intro-stoch-proc.html#processos-de-incrementos-independentes-e-estacionarios"><i class="fa fa-check"></i><b>1.2.1</b> Processes with independent and stationary increments</a></li>
+<li class="chapter" data-level="1.2.2" data-path="intro-stoch-proc.html"><a href="intro-stoch-proc.html#real-second-order-stochastic-process"><i class="fa fa-check"></i><b>1.2.2</b> Real Second-Order Stochastic Process</a></li>
+<li class="chapter" data-level="1.2.3" data-path="intro-stoch-proc.html"><a href="intro-stoch-proc.html#stationary-processes"><i class="fa fa-check"></i><b>1.2.3</b> Stationary Processes</a></li>
+<li class="chapter" data-level="1.2.4" data-path="intro-stoch-proc.html"><a href="intro-stoch-proc.html#martingales"><i class="fa fa-check"></i><b>1.2.4</b> Martingales</a></li>
+<li class="chapter" data-level="1.2.5" data-path="intro-stoch-proc.html"><a href="intro-stoch-proc.html#markov-processes"><i class="fa fa-check"></i><b>1.2.5</b> Markov Processes</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="sde.html"><a href="sde.html"><i class="fa fa-check"></i><b>2</b> Introduction to stochastic differential equations</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="sde.html"><a href="sde.html#wiener-process"><i class="fa fa-check"></i><b>2.1</b> Wiener process</a></li>
+<li class="chapter" data-level="2.2" data-path="sde.html"><a href="sde.html#itoint"><i class="fa fa-check"></i><b>2.2</b> The Itô integral</a></li>
+<li class="chapter" data-level="2.3" data-path="sde.html"><a href="sde.html#itocalc-sde"><i class="fa fa-check"></i><b>2.3</b> Itô calculus and stochastic differential equations</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="bibliography.html"><a href="bibliography.html"><i class="fa fa-check"></i><b>3</b> Bibliography</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Advanced Mathematical Economics (Part II)</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="sde" class="section level1 hasAnchor" number="2">
+<h1><span class="header-section-number">2</span> Introduction to stochastic differential equations<a href="sde.html#sde" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="wiener-process" class="section level2 hasAnchor" number="2.1">
+<h2><span class="header-section-number">2.1</span> Wiener process<a href="sde.html#wiener-process" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="definition">
+<p><span id="def:unlabeled-div-46" class="definition"><strong>Definition 2.1  (Filtration) </strong></span>Let <span class="math inline">\(X = (X(t), ~ t \in T)\)</span> be a stochastic process defined on the probability space <span class="math inline">\((\Omega, \mathcal{F}, P)\)</span>, with index set <span class="math inline">\(T = [0, +\infty[\)</span>. A family of sub-<span class="math inline">\(\sigma\)</span>-algebras of <span class="math inline">\(\mathcal{F}\)</span>, such that for <span class="math inline">\(s \leq t\)</span> we have <span class="math inline">\(\mathcal{F}_s \subset \mathcal{F}_t\)</span>, is called a <strong>filtration</strong>.</p>
+<p>The <strong>natural filtration</strong> of the process <span class="math inline">\(X\)</span> is the family<br />
+<span class="math display">\[
+\left(\mathcal{F}_t = \sigma\big(X_s : 0 \leq s \leq t\big), \; t \in T\right),
+\]</span><br />
+formed by the <span class="math inline">\(\sigma\)</span>-algebras generated by the process <span class="math inline">\(X\)</span> up to time <span class="math inline">\(t\)</span>.</p>
+<p>A stochastic process <span class="math inline">\(X = (X(t), ~ t \in T)\)</span> is <strong>adapted</strong> to the filtration <span class="math inline">\((\mathcal{F}_t, t \in T)\)</span> if, for every <span class="math inline">\(t \in T\)</span>, the random variable <span class="math inline">\(X(t)\)</span> is <span class="math inline">\(\mathcal{F}_t\)</span>-measurable; that is, the inverse images of sets <span class="math inline">\(B \in \mathcal{B}\)</span> lie in <span class="math inline">\(\mathcal{F}_t\)</span>.</p>
+</div>
+<p><span class="math inline">\(\,\)</span></p>
+<div class="definition">
+<p><span id="def:unlabeled-div-47" class="definition"><strong>Definition 2.2  (Standard Wiener Process (or Brownian Motion)) </strong></span>A <strong>standard Wiener process</strong> (or <strong>Brownian motion</strong>) is a stochastic process <span class="math inline">\(W = (W_t)_{t \geq 0}\)</span> defined on a probability space <span class="math inline">\((\Omega, \mathcal{F}, P)\)</span>, which satisfies the following properties:</p>
+<ol style="list-style-type: decimal">
+<li><p><strong>Initial condition:</strong> <span class="math inline">\(W_0 = 0\)</span> almost surely, that is,<br />
+<span class="math display">\[
+P(W_0 = 0) = 1;
+\]</span></p></li>
+<li><p><strong>Gaussian increments:</strong> For any times <span class="math inline">\(0 \leq s &lt; t &lt; \infty\)</span>, the random variable <span class="math inline">\(W_t - W_s\)</span> is normally distributed with zero mean and variance <span class="math inline">\(t - s\)</span>, i.e.,<br />
+<span class="math display">\[
+W_t - W_s \sim \mathcal{N}(0, t - s);
+\]</span></p></li>
+<li><p><strong>Independent increments:</strong> For every <span class="math inline">\(n \in \mathbb{N}\)</span> and any increasing sequence of times <span class="math inline">\(0 \leq t_0 &lt; t_1 &lt; \dots &lt; t_n\)</span>, the increments<br />
+<span class="math display">\[
+W_{t_1} - W_{t_0}, \quad W_{t_2} - W_{t_1}, \quad \dots, \quad W_{t_n} - W_{t_{n-1}}
+\]</span><br />
+are independent random variables;</p></li>
+<li><p><strong>Continuous paths:</strong> With probability 1, the map <span class="math inline">\(t \mapsto W_t(\omega)\)</span> is continuous for every <span class="math inline">\(\omega \in \Omega\)</span>, that is,<br />
+<span class="math display">\[
+P\left( W \in C([0, \infty[) \right) = 1,
+\]</span><br />
+where <span class="math inline">\(C([0, \infty[)\)</span> denotes the space of continuous functions on <span class="math inline">\([0, \infty[\)</span>.</p></li>
+</ol>
+</div>
+<p><span class="math inline">\(\,\)</span></p>
+<div class="definition">
+<p><span id="def:unlabeled-div-48" class="definition"><strong>Definition 2.3  </strong></span>Consider a function <span class="math inline">\(f:[0,t] \rightarrow \mathbb{R}\)</span> and a sequence of partitions <span class="math inline">\(\mathcal{P}_n = \{t_0^n, t_1^n, \ldots, t_n^n\}\)</span> of the interval <span class="math inline">\([0,t]\)</span>, with <span class="math inline">\(0 = t_0^n &lt; t_1^n &lt; \cdots &lt; t_n^n = t\)</span> for each <span class="math inline">\(n \in \mathbb{N}\)</span>, such that
+<span class="math display">\[
+\delta_n = \max_{0 \leq i \leq n-1} |t_{i+1}^n - t_i^n| \to 0 \quad \text{as } n \to +\infty.
+\]</span></p>
+<ul>
+<li><p>The <strong>variation</strong> of the function <span class="math inline">\(f\)</span> on the interval <span class="math inline">\([0,t]\)</span> is defined by
+<span class="math display">\[
+V_f([0,t]) = V_f(t) := \lim_{n \to +\infty} \sum_{i=0}^{n-1} |f(t_{i+1}^n) - f(t_i^n)|.
+\]</span></p></li>
+<li><p>The function <span class="math inline">\(f\)</span> is said to have <strong>finite variation</strong> on the interval <span class="math inline">\([0,t]\)</span> if <span class="math inline">\(V_f(t) &lt; +\infty\)</span>.</p></li>
+<li><p>The function <span class="math inline">\(f\)</span> is said to have <strong>bounded variation</strong> on the interval <span class="math inline">\([0,t]\)</span> if
+<span class="math display">\[
+\sup_{u \in [0,t]} V_f(u) &lt; k, \quad \text{for some } k &gt; 0.
+\]</span></p></li>
+<li><p>The function <span class="math inline">\(f\)</span> is said to have <strong>quadratic variation</strong> on the interval <span class="math inline">\([0,t]\)</span> if the limit exists and is finite:
+<span class="math display">\[
+V_f^2(t) := \lim_{n \to +\infty} \sum_{i=0}^{n-1} |f(t_{i+1}^n) - f(t_i^n)|^2.
+\]</span></p></li>
+</ul>
+</div>
+<p><span class="math inline">\(\,\)</span></p>
+<p>In stochastic processes, and particularly in stochastic differential equations, the Wiener process represents the accumulated effect of random disturbances in the evolution of a phenomenon under study. Given the importance of this process, we will present some of its properties.</p>
+<p><span class="math inline">\(\,\)</span></p>
+<div class="proposition">
+<p><span id="prp:unlabeled-div-49" class="proposition"><strong>Proposition 2.1  (Properties of the Wiener Process) </strong></span>The Wiener process, <span class="math inline">\(W_t\)</span>, has the following properties:</p>
+<ol style="list-style-type: decimal">
+<li><p>There exists a separable and continuous version of the process, that is, one with almost surely continuous paths;</p></li>
+<li><p>For all <span class="math inline">\(t \geq 0\)</span>, <span class="math inline">\(W_t \sim \mathcal{N}(0,t)\)</span>.</p></li>
+<li><p>The covariance function is given by <span class="math inline">\(Cov[W_s, W_t] = E[W_s W_t] = \min\{s, t\}\)</span>.</p></li>
+<li><p><span class="math inline">\(W_t\)</span> is a time-homogeneous Markov process.</p></li>
+<li><p>The conditional distribution of <span class="math inline">\(W_{s+\tau}\)</span> given <span class="math inline">\(W_s = x\)</span> is Gaussian with mean <span class="math inline">\(x\)</span> and variance <span class="math inline">\(\tau\)</span>.</p></li>
+<li><p><span class="math inline">\(W_t\)</span> is a martingale with respect to its natural filtration.</p></li>
+<li><p>The paths of the Wiener process are almost surely non-differentiable.</p></li>
+<li><p>The paths of the Wiener process are almost surely of infinite variation on any interval.</p></li>
+<li><p>It has finite quadratic variation on the interval <span class="math inline">\([a,b]\)</span>, equal to <span class="math inline">\(b-a\)</span>.</p></li>
+</ol>
+</div>
+<p><span class="math inline">\(\,\)</span></p>
+<div class="definition">
+<p><span id="def:unlabeled-div-50" class="definition"><strong>Definition 2.4  (Dirac delta function) </strong></span>The <strong>Dirac delta function</strong> is the generalized function <span class="math inline">\(\delta(x)\)</span> with the following properties:</p>
+<ol style="list-style-type: decimal">
+<li><p><span class="math inline">\(\delta(x) = 0\)</span> for every <span class="math inline">\(x \neq 0\)</span>;</p></li>
+<li><p><span class="math inline">\(\delta(0) = +\infty\)</span>;</p></li>
+<li><p><span class="math inline">\(\displaystyle \int_{-\infty}^{+\infty} \delta(x)\,dx = 1\)</span>.</p></li>
+</ol>
+</div>
+<p><span class="math inline">\(\,\)</span></p>
+<div class="remark">
+<p><span id="unlabeled-div-51" class="remark"><em>Remark</em> (White Noise as the Generalised Derivative of the Wiener Process). </span>Although the paths of the Wiener process are almost surely continuous but non-differentiable (property 7), and have infinite total variation (property 8), it is possible to interpret its derivative in the <strong>sense of generalised functions</strong> (or Schwartz distributions).</p>
+<p>In this context, the <strong>generalised derivative</strong> of the Wiener process is defined as
+<span class="math display">\[
+\frac{dW_t}{dt} = \xi_t,
+\]</span>
+where <span class="math inline">\(\xi_t\)</span> denotes a <strong>generalised stochastic process</strong>, referred to as <strong>white noise</strong>. This process is not a function in the classical sense, but rather a distribution (or functional) acting on smooth test functions.</p>
+<p>White noise <span class="math inline">\(\xi_t\)</span> is characterised by the following formal properties:</p>
+<ul>
+<li>It is a zero-mean process: <span class="math inline">\(E(\xi_t) = 0\)</span>;</li>
+<li>Its autocovariance function is given by
+<span class="math display">\[
+E(\xi_s \xi_t) = \delta(t - s),
+\]</span>
+where <span class="math inline">\(\delta\)</span> is the Dirac delta function.</li>
+</ul>
+<p>This formalism is fundamental in the formulation of stochastic differential equations (SDEs), in which white noise represents an infinitesimal random perturbing force acting continuously over time.</p>
+</div>
+<p><span class="math inline">\(\,\)</span></p>
+<p>The following image shows two sample paths of a Wiener process. The paths were obtained by numerical simulation, considering independent increments that are normally distributed with zero mean and variance proportional to the time increment.</p>
+<p><img src="_main_files/figure-html/fig-wiener-trajectories-1.png" width="672" /></p>
+<p><span class="math inline">\(\,\)</span></p>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-52" class="exercise"><strong>Exercise 2.1  </strong></span>Taking advantage of the properties of the Wiener process, compute:</p>
+<ol style="list-style-type: decimal">
+<li><p><span class="math inline">\(P(W(2.7) &gt; 1.5)\)</span>.</p></li>
+<li><p><span class="math inline">\(P(-1.5 &lt; W(2.7) &lt; 1.5)\)</span>.</p></li>
+<li><p><span class="math inline">\(P(W(2.7) &lt; 1.5 \mid W(1.8) = 1)\)</span>.</p></li>
+<li><p><span class="math inline">\(P(-1.5 &lt; W(2.7) &lt; 1.5 \mid W(1.8) = 1)\)</span>.</p></li>
+<li><p><span class="math inline">\(E(W(t) \mid W(s), W(u)) \quad \text{com } 0 &lt; u &lt; s &lt; t\)</span>.</p></li>
+<li><p><span class="math inline">\(Var(W(t) \mid W(s), W(u)) \quad \text{com } 0 &lt; u &lt; s &lt; t\)</span>.</p></li>
+<li><p><span class="math inline">\(P(W(2.7) &gt; 1.5 \mid W(1.8) = 1,\, W(0.5) = -2)\)</span>.</p></li>
+<li><p><span class="math inline">\(E(W(2.7) \mid W(1.8) = 1,\, W(0.5) = -2)\)</span>.</p></li>
+<li><p><span class="math inline">\(P(W(1.8) &lt; 1 \mid W(2.7) = 1.5)\)</span>.</p></li>
+<li><p><span class="math inline">\(P(W(1.8) = 1 \mid W(2.7) &lt; 1.5)\)</span>.</p></li>
+<li><p><span class="math inline">\(P(W(2.7) = 1.5,\, W(1.8) &gt; 1)\)</span>.</p></li>
+<li><p><span class="math inline">\(P(W(2.7) &lt; 1.5,\, W(1.8) = 1)\)</span>.</p></li>
+<li><p><span class="math inline">\(P(-1 &lt; W(2.7) - W(1.8) &lt; 1.4 \;\wedge\; 0.5 &lt; W(1.6) - W(0.9) &lt; 1.5)\)</span>.</p></li>
+<li><p><span class="math inline">\(P(-1 &lt; W(2.7) - W(1.8) &lt; 1.4 \mid W(1.6) - W(0.9) = 1.5)\)</span>.</p></li>
+</ol>
+</div>
+<p><span class="math inline">\(\,\)</span></p>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-53" class="exercise"><strong>Exercise 2.2  </strong></span></p>
+<!-- Alfredo 6.1-->
+<p>Consider a standard Brownian motion <span class="math inline">\((B(t),~t\geq 0)\)</span> at the times <span class="math inline">\(0&lt;u&lt;u+v&lt;u+v+w\)</span>, with <span class="math inline">\(u,v,w&gt;0\)</span>. Compute
+<span class="math display">\[
+E\big(B(u)B(u+v)B(u+v+w)\big).
+\]</span></p>
+</div>
+<p><span class="math inline">\(\,\)</span></p>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-54" class="exercise"><strong>Exercise 2.3  </strong></span></p>
+<!-- Alfredo 6.2-->
+<p>Let <span class="math inline">\((B(t),~t\geq 0)\)</span> with <span class="math inline">\(B(0)=3\)</span> be a Brownian motion with variance <span class="math inline">\(\sigma^{2}\)</span>. Compute
+<span class="math display">\[
+\operatorname{Cov}(B(t),B(s)), \quad t,s \geq 0.
+\]</span></p>
+</div>
+<p><span class="math inline">\(\,\)</span></p>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-55" class="exercise"><strong>Exercise 2.4  </strong></span></p>
+<!-- Alfredo 6.3-->
+<p>Consider a standard Brownian motion <span class="math inline">\((B(t),~t\geq 0)\)</span>. Determine the covariance function for the following stochastic processes:</p>
+<ol style="list-style-type: lower-alpha">
+<li><p><span class="math inline">\(U(t)=e^{-t}B(e^{2t})\)</span>, for <span class="math inline">\(t\geq 0\)</span>.</p></li>
+<li><p><span class="math inline">\(V(t)=(1-t)B\!\left(\dfrac{t}{1-t}\right)\)</span>, for <span class="math inline">\(0&lt;t&lt;1\)</span>.</p></li>
+<li><p><span class="math inline">\(W(t)=tB\!\left(\dfrac{1}{t}\right)\)</span>, with <span class="math inline">\(W(0)=0\)</span>.</p></li>
+</ol>
+</div>
+<p><span class="math inline">\(\,\)</span></p>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-56" class="exercise"><strong>Exercise 2.5  </strong></span></p>
+<!-- Alfredo 6.5-->
+<p>Consider a standard Brownian motion <span class="math inline">\((B(t),~t \geq 0)\)</span>. For fixed <span class="math inline">\(t\)</span> and <span class="math inline">\(M(t)=\max\limits_{0\leq u\leq t}B(u)\)</span>, show that:</p>
+<ol style="list-style-type: lower-alpha">
+<li><p><span class="math inline">\(M(t)\)</span> and <span class="math inline">\(\left| B(t)\right|\)</span> have the same distribution with p.d.f.
+<span class="math display">\[
+f_{M(t)}(x)=\frac{2}{\sqrt{t}}\phi (x/\sqrt{t}), \quad x&gt;0.
+\]</span></p></li>
+<li><p><span class="math inline">\(E(M(t))=\sqrt{2t/\pi }\)</span>.</p></li>
+</ol>
+</div>
+<p><span class="math inline">\(\,\)</span></p>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-57" class="exercise"><strong>Exercise 2.6  </strong></span></p>
+<!-- Alfredo 6.6-->
+<p>Let <span class="math inline">\(B_{1}(t)\)</span> and <span class="math inline">\(B_{2}(t)\)</span> be two independent Brownian motions, and define <span class="math display">\[R(t):=\sqrt{B_{1}(t)^{2}+B_{2}(t)^{2}}, \quad t\geq 0.\]</span>
+Compute <span class="math inline">\(E(R(t))\)</span>.</p>
+</div>
+<p><span class="math inline">\(\,\)</span></p>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-58" class="exercise"><strong>Exercise 2.7  </strong></span></p>
+<!-- Alfredo 6.7-->
+<p>The fluctuations of the share price of a certain company are modelled by a Brownian motion <span class="math inline">\((A(t),\, t \geq 0)\)</span>. Suppose the company goes bankrupt if the market price of its shares reaches the level zero.</p>
+<p>If the initial share value is <span class="math inline">\(A(0) = 5\)</span> monetary units, determine the probability that…</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>… the company goes bankrupt at time <span class="math inline">\(t = 25\)</span>.</p></li>
+<li><p>… the shares are above 10 monetary units at time <span class="math inline">\(t = 25\)</span>.</p></li>
+</ol>
+</div>
+<p><span class="math inline">\(\,\)</span></p>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-59" class="exercise"><strong>Exercise 2.8  </strong></span></p>
+<!-- Alfredo 6.8-->
+<p>Consider a Brownian motion with parameters <span class="math inline">\(\mu=0.1\)</span> and <span class="math inline">\(\sigma=2\)</span>. Compute the probability that the process exits the interval <span class="math inline">\((a,b]\)</span> at the point <span class="math inline">\(b\)</span>, starting from <span class="math inline">\(X(0)=0\)</span>, for <span class="math inline">\(b=1,10,100\)</span> and <span class="math inline">\(a=-b\)</span>.</p>
+</div>
+<p><span class="math inline">\(\,\)</span></p>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-60" class="exercise"><strong>Exercise 2.9  </strong></span></p>
+<!-- Alfredo 6.9-->
+<p>The fluctuation of the price of a certain type of shares can be described by a geometric Brownian motion with standard deviation <span class="math inline">\(\alpha = 0\)</span>. Assuming you purchase these shares, what are the chances that your invested capital will double?</p>
+</div>
+</div>
+<div id="itoint" class="section level2 hasAnchor" number="2.2">
+<h2><span class="header-section-number">2.2</span> The Itô integral<a href="sde.html#itoint" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="remark">
+<p><span id="unlabeled-div-61" class="remark"><em>Remark</em>. </span>In what follows, we adopt the following notation for conditional expectation and probability:</p>
+<p><span class="math display">\[E(\cdot \mid X_s=x)=E_{s,x}(\cdot)\]</span>
+and
+<span class="math display">\[P(\cdot \mid X_s=x)=P_{s,x}(\cdot).\]</span></p>
+</div>
+<p><span class="math inline">\(\,\)</span></p>
+<div class="definition">
+<p><span id="def:unlabeled-div-62" class="definition"><strong>Definition 2.5  (Diffusion process) </strong></span>Let <span class="math inline">\((\Omega,\mathcal{F},P)\)</span> be a probability space and let <span class="math inline">\((X_t, t \geq 0)\)</span> be a stochastic process defined on that space. We say that <span class="math inline">\(X_t\)</span> is a <strong>diffusion process</strong> if it satisfies the following properties:</p>
+<ol style="list-style-type: lower-roman">
+<li><p><span class="math inline">\(X_t\)</span> is a Markov process;</p></li>
+<li><p>The trajectories of <span class="math inline">\(X_t\)</span> are almost surely continuous;</p></li>
+<li><p><span class="math inline">\(X_t \in L^2\)</span>, that is, <span class="math inline">\(E[X_t^2] &lt; +\infty\)</span>;</p></li>
+<li><p>For every <span class="math inline">\(\varepsilon &gt; 0\)</span>,
+<span class="math display">\[
+\lim_{\Delta \to 0^+} \frac{P_{s,x}(|X_{s+\Delta} - X_s| &gt; \varepsilon)}{\Delta} = 0;
+\]</span></p></li>
+<li><p>The limit exists and is finite:
+<span class="math display">\[
+\lim_{\Delta \to 0^+} E_{s,x}\left[\frac{X_{s+\Delta} - X_s}{\Delta}\right] = a(s,x);
+\]</span></p></li>
+<li><p>The limit exists and is finite:
+<span class="math display">\[
+\lim_{\Delta \to 0^+} E_{s,x}\left[\frac{(X_{s+\Delta} - X_s)^2}{\Delta}\right] = b(s,x).
+\]</span></p></li>
+</ol>
+<p>If the functions <span class="math inline">\(a(s,x)\)</span> and <span class="math inline">\(b(s,x)\)</span> are independent of the time variable <span class="math inline">\(s\)</span>, the process is called <strong>homogeneous</strong>.</p>
+<p>The functions <span class="math inline">\(a(s,x)\)</span> and <span class="math inline">\(b(s,x)\)</span> are called, respectively, the <strong>drift coefficient</strong> (or <strong>first infinitesimal moment</strong>) and the <strong>diffusion coefficient</strong> (or <strong>second infinitesimal moment</strong>).</p>
+<p>The drift coefficient, <span class="math inline">\(a(s,x)\)</span>, measures the rate of change of the process’s mean at time <span class="math inline">\(s\)</span>, whereas the diffusion coefficient, <span class="math inline">\(b(s,x)\)</span>, measures the intensity of the process’s fluctuations — in other words, the rate of change of the process’s variance at time <span class="math inline">\(s\)</span>.</p>
+</div>
+<p><span class="math inline">\(\,\)</span></p>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-63" class="exercise"><strong>Exercise 2.10  </strong></span></p>
+<ol style="list-style-type: lower-roman">
+<li><p>Show that the Wiener process <span class="math inline">\(W_t\)</span> is a homogeneous diffusion process with zero drift coefficient and unit diffusion coefficient.</p></li>
+<li><p>Show that <span class="math inline">\(X_t = x_0 + \sigma W_t\)</span>, with constants <span class="math inline">\(x_0\)</span> and <span class="math inline">\(\sigma\)</span>, i.e. a (non-standard) Wiener process, is a homogeneous diffusion process with zero drift coefficient and diffusion coefficient <span class="math inline">\(\sigma^2\)</span>.</p></li>
+<li><p>Show that <span class="math inline">\(Z_t = x_0 + \mu t + \sigma W_t\)</span>, with constants <span class="math inline">\(x_0\)</span>, <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span>, known as Brownian motion with drift, is a homogeneous diffusion process with drift coefficient <span class="math inline">\(\mu\)</span> and diffusion coefficient <span class="math inline">\(\sigma^2\)</span>.</p></li>
+</ol>
+</div>
+<p><span class="math inline">\(\,\)</span></p>
+<div class="theorem">
+<p><span id="thm:unlabeled-div-64" class="theorem"><strong>Theorem 2.1  </strong></span>Let <span class="math inline">\(X_t\)</span> be a diffusion process, as defined above, with transition density function <span class="math inline">\(p(t, y \mid s, x)\)</span>, continuous in <span class="math inline">\(s\)</span>, and with first and second partial derivatives in <span class="math inline">\(x\)</span> finite and continuous in <span class="math inline">\(s\)</span>. Under these conditions the following hold:</p>
+<ol style="list-style-type: decimal">
+<li><p><strong>Forward Kolmogorov equation</strong> (or <strong>Fokker–Planck equation</strong>):
+<span class="math display">\[
+\frac{\partial p}{\partial t} + \frac{\partial\big(a(s,x)\,p\big)}{\partial y} - \frac{1}{2} \frac{\partial^2\big(b(s,x)\,p\big)}{\partial y^2} = 0,
+\]</span>
+with initial condition
+<span class="math display">\[
+\lim_{t \downarrow s} p(t, y \mid s, x) = \delta(x - y),
+\]</span>
+where <span class="math inline">\(\delta\)</span> denotes the Dirac delta function, and <span class="math inline">\((s, x)\)</span> is fixed;</p></li>
+<li><p><strong>Backward Kolmogorov equation</strong>:
+<span class="math display">\[
+\frac{\partial p}{\partial s} + a(s,x)\,\frac{\partial p}{\partial x} + \frac{1}{2}\,b(s,x)\,\frac{\partial^2 p}{\partial x^2} = 0,
+\]</span>
+with initial condition
+<span class="math display">\[
+\lim_{t \uparrow s} p(t, y \mid s, x) = \delta(x - y),
+\]</span>
+where <span class="math inline">\(\delta\)</span> denotes the Dirac delta function, and <span class="math inline">\((t, y)\)</span> is fixed.</p></li>
+</ol>
+</div>
+<p><span class="math inline">\(\,\)</span></p>
+<p>Consider the point <span class="math inline">\(X(0)=X_0\in\mathbb{R}\)</span> and the following Cauchy problem induced by an ordinary differential equation:</p>
+<p><span class="math display" id="eq:odeex">\[\begin{equation}
+\tag{2.1}
+\begin{cases}
+dX(t)=f(X(t))\,dt, &amp; \text{for } t&gt;0,\\
+X(0)=X_0,
+\end{cases}
+\end{equation}\]</span></p>
+<p>where <span class="math inline">\(f:\mathbb{R}\to\mathbb{R}\)</span> is a differentiable function and <span class="math inline">\(X:\mathbb{R}_0^+\to\mathbb{R}\)</span> is the solution of <a href="sde.html#eq:odeex">(2.1)</a>.</p>
+<p>If we interpret <span class="math inline">\(X(t)\)</span> as the trajectory of a particle, then <span class="math inline">\(dX(t)/dt\)</span> represents its velocity. It is natural to admit that this velocity may present small oscillations not explained by the function <span class="math inline">\(f\)</span>; in other words, the system described by equation <a href="sde.html#eq:odeex">(2.1)</a> does not incorporate the random effects that environmental fluctuations induce on the trajectory of <span class="math inline">\(X\)</span>. Hence it is necessary to add a <em>noise</em> term to problem <a href="sde.html#eq:odeex">(2.1)</a> so as to reflect the influence of these fluctuations on the system dynamics:</p>
+<p><span class="math display" id="eq:sdeex">\[\begin{equation}
+\tag{2.2}
+\begin{cases}
+dX(t)=f(X(t))\,dt + g(X(t))\,\xi(t)\,dt, &amp; \text{for } t&gt;0,\\
+X(0)=X_0,
+\end{cases}
+\end{equation}\]</span></p>
+<p>where <span class="math inline">\(g(\cdot)\)</span>, which measures the intensity of the environmental fluctuations, is a function depending on <span class="math inline">\(X(t)\)</span>.</p>
+<p>Considering that <span class="math inline">\(dW(t)=\xi(t)\,dt\)</span>, system <a href="sde.html#eq:sdeex">(2.2)</a> can be rewritten as:</p>
+<p><span class="math display">\[
+\begin{cases}
+dX(t)=f(X(t))\,dt + g(X(t))\,dW(t),\\
+X(0)=X_0,
+\end{cases}
+\]</span></p>
+<p>which represents a <strong>stochastic differential equation (SDE)</strong>. The solution of this system is formally given by</p>
+<p><span class="math display" id="eq:sdesol">\[\begin{equation}
+\tag{2.3}
+X(t)=X_0 + \int_0^t f(X(s))\,ds + \int_0^t g(X(s))\,dW(s), \quad t&gt;0,
+\end{equation}\]</span></p>
+<p>where the first integral is a Riemann–Stieltjes integral. However, the second integral <strong>does not exist</strong> in that sense, since the trajectories of the Wiener process are, almost surely, of unbounded variation on <span class="math inline">\([0,t]\)</span>.</p>
+<p>Nevertheless, because the Wiener process has finite quadratic variation, it is possible to define the second integral by resorting to the <strong>stochastic integral</strong>.</p>
+<p>Note that, as before, the explicit dependence on <span class="math inline">\(\omega\)</span> has been omitted from the notation of <span class="math inline">\(X(t)\)</span>.</p>
+<p>We will now show how to obtain the solution <a href="sde.html#eq:sdesol">(2.3)</a> and how to define the stochastic integral
+<span class="math display">\[
+\int_0^t g(X(s))\,dW(s).
+\]</span></p>
+<p><span class="math inline">\(\,\)</span></p>
+<p>Suppose we wish to compute the following integral:</p>
+<p><span class="math display">\[
+\int_0^t W(u)\,dW(u).
+\]</span></p>
+<p>If we apply the usual calculus rules, we obtain the formal solution</p>
+<p><span class="math display" id="eq:solintw">\[\begin{equation}
+\tag{2.4}
+\frac{1}{2}W^2(t).
+\end{equation}\]</span></p>
+<p>Let us check whether this solution is correct.</p>
+<p>Let <span class="math inline">\(f:[0,t]\to\mathbb{R}^+\)</span> be given by <span class="math inline">\(f(u)=W(u)\)</span>, and let <span class="math inline">\(\mathcal{P}_n=\{t_0^n,t_1^n,\dots,t_n^n\}\)</span>, <span class="math inline">\(n=1,2,\dots\)</span>, be partitions of <span class="math inline">\([0,t]\)</span> with
+<span class="math display">\[
+0=t_0^n &lt; t_1^n &lt; \dots &lt; t_n^n = t \ge 0,
+\]</span>
+such that the mesh
+<span class="math display">\[
+\delta_n = \max_{0\le i\le n-1} |t_{i+1}^n - t_i^n|
+\]</span>
+satisfies <span class="math inline">\(\delta_n \to 0\)</span> as <span class="math inline">\(n\to+\infty\)</span>.</p>
+<p>Consider the Riemann–Stieltjes approximating sums for the integral <span class="math inline">\(\int_0^t f(u)\,dW(u)\)</span>:
+<span class="math display">\[
+\sum_{i=0}^{n-1} W(\xi_i^n)\big(W(t_{i+1}^n)-W(t_i^n)\big),
+\]</span>
+with <span class="math inline">\(\xi_i^n\in[t_i^n,t_{i+1}^n]\)</span>, and use limits in mean square as <span class="math inline">\(n\to+\infty\)</span> to define the integral when possible.</p>
+<p>Consider the particular choice <span class="math inline">\(\xi_i^n = (1-\lambda)t_i^n + \lambda t_{i+1}^n\)</span>, and define the Riemann–Stieltjes sums</p>
+<p><span class="math display">\[
+S_\lambda(W;t) = \sum_{i=0}^{n-1} W(\xi_i^n)\big(W(t_{i+1}^n)-W(t_i^n)\big).
+\]</span></p>
+<p>One easily verifies that, for fixed <span class="math inline">\(\lambda\)</span>, the mean-square limit of these sums, as <span class="math inline">\(n\to+\infty\)</span>, is</p>
+<p><span class="math display">\[
+\frac{W^2(t)}{2} + \Big(\lambda - \frac{1}{2}\Big)t.
+\]</span></p>
+<p>Indeed,</p>
+<p><span class="math display">\[
+E\Big[\Big(S_\lambda(W;t) - \frac{W^2(t)}{2} - \big(\lambda - \tfrac{1}{2}\big)t\Big)^2\Big] \longrightarrow 0.
+\]</span></p>
+<p>This limit depends on the choice of <span class="math inline">\(\lambda\)</span> and therefore on the intermediate point <span class="math inline">\(\xi_i\in[t_i,t_{i+1}]\)</span>. Hence the integral does <strong>not</strong> exist in the Riemann–Stieltjes sense, because there is no common limit for all choices of intermediate points.</p>
+<p>By fixing <span class="math inline">\(\lambda=0\)</span> (choice of the left endpoint <span class="math inline">\(\xi_i=t_i\)</span>), we obtain</p>
+<p><span class="math display">\[
+\int_0^t W(u)\,dW(u) = \frac{1}{2}W^2(t) - \frac{1}{2}t,
+\]</span></p>
+<p>which differs from <a href="sde.html#eq:solintw">(2.4)</a>. Indeed, different values of <span class="math inline">\(\lambda\)</span> produce different integrals: for example, with <span class="math inline">\(\lambda=\tfrac{1}{2}\)</span> (midpoint rule) one obtains</p>
+<p><span class="math display">\[
+\int_0^t W(u)\,dW(u) = \frac{1}{2}W^2(t).
+\]</span></p>
+<p>The dependence on <span class="math inline">\(\lambda\)</span> raises the natural question: <strong>which value of <span class="math inline">\(\lambda\)</span> should we choose?</strong></p>
+<p>Choosing <span class="math inline">\(\xi_i=t_i\)</span> (left endpoint) allows us to define integrals of functions far more general than the Wiener process alone. This leads to integrals of the type</p>
+<p><span class="math display">\[
+\int_0^t G(s)\,dW(s),
+\]</span></p>
+<p>where <span class="math inline">\(G\)</span> belongs to a large class of <strong>non-anticipative</strong> functions. Later we will make this precise.</p>
+<p>As noted, different choices of <span class="math inline">\(\lambda\)</span> give different integrals. Thus:</p>
+<ol style="list-style-type: lower-roman">
+<li><p><span class="math inline">\(\lambda=0\)</span> (left endpoint) yields the <strong>Itô integral</strong>;</p></li>
+<li><p><span class="math inline">\(\lambda=\tfrac{1}{2}\)</span> (midpoint) yields the <strong>Stratonovich integral</strong>.</p></li>
+</ol>
+<p><span class="math inline">\(\,\)</span></p>
+<p>We now focus on the Itô integral. We begin by introducing several definitions and important results.</p>
+<p><span class="math inline">\(\,\)</span></p>
+<div class="definition">
+<p><span id="def:unlabeled-div-65" class="definition"><strong>Definition 2.6  </strong></span>Let <span class="math inline">\(W(t),\ t\ge 0\)</span>, be a standard Wiener process defined on a probability space <span class="math inline">\((\Omega,\mathcal{F},P)\)</span>.</p>
+<ol style="list-style-type: decimal">
+<li><p>The <strong>natural filtration of the Wiener process up to time</strong> <span class="math inline">\(s&gt;0\)</span> is the <span class="math inline">\(\sigma\)</span>-algebra
+<span class="math display">\[
+\mathcal{M}_s = \sigma\big(W(u): 0\le u\le s\big);
+\]</span></p></li>
+<li><p>The <strong><span class="math inline">\(\sigma\)</span>-algebra of future increments of the Wiener process</strong> is
+<span class="math display">\[
+\mathcal{M}_s^+ = \sigma\big(W(u)-W(s): u\ge s\big);
+\]</span></p></li>
+<li><p>A family <span class="math inline">\(\{\mathcal{A}_s: 0\le s\le t\}\)</span> of <span class="math inline">\(\sigma\)</span>-algebras is called a <strong>non-anticipative filtration</strong> with respect to <span class="math inline">\(W(s)\)</span> if:</p>
+<ul>
+<li><p><span class="math inline">\(\mathcal{A}_s \supset \mathcal{M}_s\)</span> for all <span class="math inline">\(0\le s\le t\)</span>;</p></li>
+<li><p><span class="math inline">\(\mathcal{A}_s\)</span> is independent of <span class="math inline">\(\mathcal{M}_s^+\)</span> for every <span class="math inline">\(s\ge 0\)</span>.</p></li>
+</ul></li>
+</ol>
+</div>
+<p>Informally, <span class="math inline">\(\mathcal{A}_s\)</span> contains all the information about the process available up to time <span class="math inline">\(s\)</span>.</p>
+<p>Usually the chosen non-anticipative filtration <span class="math inline">\(\mathcal{A}_s\)</span> coincides with the natural filtration <span class="math inline">\(\mathcal{M}_s\)</span>, unless extra information must be included (for example, to incorporate an initial condition); in that case one works with a larger filtration provided it remains non-anticipative.</p>
+<p><span class="math inline">\(\,\)</span></p>
+<div class="definition">
+<p><span id="def:unlabeled-div-66" class="definition"><strong>Definition 2.7  (Non-anticipative process) </strong></span>A stochastic process <span class="math inline">\(G(t)\)</span> is called <strong>non-anticipative</strong> with respect to the filtration <span class="math inline">\(\mathcal{A}_t\)</span> if <span class="math inline">\(G(t)\)</span> is <span class="math inline">\(\mathcal{A}_t\)</span>-measurable for every <span class="math inline">\(t\ge 0\)</span> (i.e. <span class="math inline">\(G(t)\)</span> depends only on information available up to time <span class="math inline">\(t\)</span>).</p>
+</div>
+<p><span class="math inline">\(\,\)</span></p>
+<p>Given these definitions, we can define the Itô integral for a special class of non-anticipative functions: the <strong>step functions</strong> (simple processes). Note: to define the Itô integral it is not enough that <span class="math inline">\(G\)</span> be non-anticipative — we also require that <span class="math inline">\(G(t,\omega)\)</span> be <em>jointly measurable</em>.</p>
+<p><span class="math inline">\(\,\)</span></p>
+<div class="definition">
+<p><span id="def:unlabeled-div-67" class="definition"><strong>Definition 2.8  (Hilbert space) </strong></span>The <strong>Hilbert space</strong> on the interval <span class="math inline">\([0,t]\)</span>, denoted <span class="math inline">\(H^2[0,t]\)</span>, is the space of functions
+<span class="math display">\[
+G:[0,t]\times\Omega\to\mathbb{R}
+\]</span>
+such that:</p>
+<ul>
+<li><p><span class="math inline">\(G\)</span> is <em>jointly measurable</em> with respect to Lebesgue measure <span class="math inline">\(l\)</span> on <span class="math inline">\([0,t]\)</span> and probability measure <span class="math inline">\(P\)</span>;</p></li>
+<li><p><span class="math inline">\(G\)</span> is <strong>non-anticipative</strong>;</p></li>
+<li><p><span class="math inline">\(\displaystyle \int_0^t E\big(G^2(u,\omega)\big)\,du &lt; +\infty\)</span>.</p></li>
+</ul>
+</div>
+<p><span class="math inline">\(\,\)</span></p>
+<div class="definition">
+<p><span id="def:unlabeled-div-68" class="definition"><strong>Definition 2.9  (Step function) </strong></span>A function <span class="math inline">\(G\in H^2[0,t]\)</span> is called a <strong>step function</strong> if there exists a partition <span class="math inline">\(0=t_0&lt;t_1&lt;\dots&lt;t_n=t\)</span> of <span class="math inline">\([0,t]\)</span> such that</p>
+<p><span class="math display">\[
+G(u)=G(t_i),\qquad t_i\le u &lt; t_{i+1},\qquad i=0,\dots,n-1,
+\]</span></p>
+<p>with each <span class="math inline">\(G(t_i)\)</span> being <span class="math inline">\(\mathcal{A}_{t_i}\)</span>-measurable (because <span class="math inline">\(G\)</span> is non-anticipative).</p>
+<p>We denote the space of step functions in <span class="math inline">\(H^2[0,t]\)</span> by <span class="math inline">\(H_E^2[0,t]\)</span>.</p>
+</div>
+<p><span class="math inline">\(\,\)</span></p>
+<div class="definition">
+<p><span id="def:unlabeled-div-69" class="definition"><strong>Definition 2.10  (Itô integral for step functions) </strong></span>Let <span class="math inline">\(G\)</span> be a step function in <span class="math inline">\(H_E^2[0,t]\)</span> with partition <span class="math inline">\(0=t_0&lt;\dots&lt;t_n=t\)</span>. The Itô integral of <span class="math inline">\(G\)</span> over <span class="math inline">\([0,t]\)</span> is defined by</p>
+<p><span class="math display">\[
+\int_0^t G(s)\,dW(s) = \sum_{i=0}^{n-1} G(t_i)\big(W(t_{i+1})-W(t_i)\big).
+\]</span></p>
+</div>
+<p><span class="math inline">\(\,\)</span></p>
+<div class="theorem">
+<p><span id="thm:unlabeled-div-70" class="theorem"><strong>Theorem 2.2  (Properties of the Itô integral) </strong></span>Let <span class="math inline">\(F\)</span> and <span class="math inline">\(G\)</span> be in <span class="math inline">\(H_E^2[0,t]\)</span>, and let <span class="math inline">\(\alpha,\beta\in\mathbb{R}\)</span>. Then:</p>
+<ol style="list-style-type: decimal">
+<li><p><strong>Linearity</strong>
+<span class="math display">\[
+\int_0^t \big(\alpha F(s) + \beta G(s)\big)\,dW(s)
+= \alpha\int_0^t F(s)\,dW(s) + \beta\int_0^t G(s)\,dW(s).
+\]</span></p></li>
+<li><p><strong>Zero expectation</strong>
+<span class="math display">\[
+E\Big[\int_0^t F(s)\,dW(s)\Big] = 0.
+\]</span></p></li>
+<li><p><strong>Itô isometry</strong>
+<span class="math display">\[
+E\Big[\big(\int_0^t F(s)\,dW(s)\big)^2\Big] = E\Big[\int_0^t F(s)^2\,ds\Big] = \int_0^t E[F(s)^2]\,ds.
+\]</span></p></li>
+</ol>
+</div>
+<p><span class="math inline">\(\,\)</span></p>
+<p>We have thus defined the Itô integral for step functions in <span class="math inline">\(H_E^2[0,t]\)</span>. We now extend the integral to general functions in <span class="math inline">\(H^2[0,t]\)</span> via approximating sequences of step functions.</p>
+<p><span class="math inline">\(\,\)</span></p>
+<div class="theorem">
+<p><span id="thm:unlabeled-div-71" class="theorem"><strong>Theorem 2.3  (Mean-square approximation) </strong></span>Let <span class="math inline">\(G\in H^2[0,t]\)</span>. Then there exists a sequence of bounded step functions <span class="math inline">\(G_n\in H_E^2[0,t]\)</span> such that</p>
+<p><span class="math display">\[
+E\Big[\int_0^t |G(s)-G_n(s)|^2\,ds\Big] \xrightarrow{n\to\infty} 0.
+\]</span></p>
+</div>
+<p><span class="math inline">\(\,\)</span></p>
+<div class="definition">
+<p><span id="def:unlabeled-div-72" class="definition"><strong>Definition 2.11  </strong></span>Let <span class="math inline">\(G\)</span> and <span class="math inline">\(G_n\)</span> be as in the theorem above. The <strong>Itô integral</strong> of <span class="math inline">\(G\)</span> over <span class="math inline">\([0,t]\)</span> is defined by the mean-square limit</p>
+<p><span class="math display">\[
+\int_0^t G(s)\,dW(s) = \lim_{n\to\infty} \int_0^t G_n(s)\,dW(s),
+\]</span></p>
+<p>where the limit is taken in mean square.</p>
+</div>
+<p><span class="math inline">\(\,\)</span></p>
+<div class="theorem">
+<p><span id="thm:unlabeled-div-73" class="theorem"><strong>Theorem 2.4  </strong></span>Let <span class="math inline">\(F,G\in H^2[0,t]\)</span> and <span class="math inline">\(\alpha,\beta\in\mathbb{R}\)</span>. Then:</p>
+<ol style="list-style-type: decimal">
+<li><p><strong>Linearity</strong>
+<span class="math display">\[
+\int_0^t \big(\alpha F(s) + \beta G(s)\big)\,dW(s)
+=
+\alpha\int_0^t F(s)\,dW(s) + \beta\int_0^t G(s)\,dW(s).
+\]</span></p></li>
+<li><p><strong>Zero expectation</strong>
+<span class="math display">\[
+E\Big[\int_0^t F(s)\,dW(s)\Big] = 0.
+\]</span></p></li>
+<li><p><strong>Itô isometry</strong>
+<span class="math display">\[
+E\Big[\big(\int_0^t F(s)\,dW(s)\big)^2\Big] = E\Big[\int_0^t F(s)^2\,ds\Big] = \int_0^t E[F(s)^2]\,ds.
+\]</span></p></li>
+<li><p><strong>Covariance</strong>
+<span class="math display">\[
+E\Big[\int_0^t F(s)\,dW(s)\ \int_0^t G(s)\,dW(s)\Big]
+= E\Big[\int_0^t F(s)G(s)\,ds\Big].
+\]</span></p></li>
+<li><p><strong>Normal distribution in the deterministic case</strong> (if <span class="math inline">\(G(s)\)</span> is deterministic):
+<span class="math display">\[
+\int_0^t G(s)\,dW(s) \sim \mathcal{N}\Big(0,\int_0^t G^2(s)\,ds\Big).
+\]</span></p></li>
+</ol>
+</div>
+<p><span class="math inline">\(\,\)</span></p>
+<p>The Itô integral for functions in <span class="math inline">\(H^2[0,t]\)</span> can be studied as a function of its upper limit, yielding an <strong>indefinite integral</strong>. The proofs of the properties above lie beyond the scope of this course.</p>
+<p><span class="math inline">\(\,\)</span></p>
+<div class="definition">
+<p><span id="def:unlabeled-div-74" class="definition"><strong>Definition 2.12  (Indefinite Itô integral) </strong></span>Let <span class="math inline">\(G\in H^2[0,d]\)</span> and consider <span class="math inline">\(t\in[0,d]\)</span>. The indefinite Itô integral is the stochastic process</p>
+<p><span class="math display">\[
+Z(t) = \int_0^t G(s)\,dW(s) = \int_0^d G(s)\,I_{[0,t]}(s)\,dW(s).
+\]</span></p>
+</div>
+<p><span class="math inline">\(\,\)</span></p>
+<div class="theorem">
+<p><span id="thm:unlabeled-div-75" class="theorem"><strong>Theorem 2.5  </strong></span>Let <span class="math inline">\(Z(t)\)</span> be the process defined above. Then:</p>
+<ol style="list-style-type: decimal">
+<li><p><span class="math inline">\(Z(t)\)</span> is a martingale with respect to the filtration <span class="math inline">\(\mathcal{A}_t\)</span>;</p></li>
+<li><p><span class="math inline">\(Z(t)\)</span> has a continuous version (i.e. it has almost surely continuous paths);</p></li>
+<li><p><span class="math inline">\(Z(t)\)</span> has uncorrelated increments.</p></li>
+</ol>
+</div>
+<p><span class="math inline">\(\,\)</span></p>
+<p>The classes of functions introduced so far are fairly simple. In practice one often needs to consider Itô integrals where <span class="math inline">\(G\)</span> belongs not only to <span class="math inline">\(H^2[0,t]\)</span> but to the larger space <span class="math inline">\(M^2[0,t]\)</span>.</p>
+<p><span class="math inline">\(\,\)</span></p>
+<div class="definition">
+<p><span id="def:unlabeled-div-76" class="definition"><strong>Definition 2.13  </strong></span>We say that <span class="math inline">\(G(s,\omega)\)</span> belongs to the space <span class="math inline">\(M^2[0,t]\)</span> if:</p>
+<ol style="list-style-type: decimal">
+<li><p>It is <strong>jointly measurable</strong>;</p></li>
+<li><p>It is <strong>non-anticipative</strong> with respect to the filtration <span class="math inline">\(\mathcal{A}_s\)</span>;</p></li>
+<li><p>The integral
+<span class="math display">\[
+\int_0^t G^2(s)\,ds
+\]</span>
+exists and is <strong>finite almost surely</strong>.</p></li>
+</ol>
+</div>
+<p><span class="math inline">\(\,\)</span></p>
+<p>Note that the requirement <span class="math inline">\(\int_0^t G^2(s)\,ds &lt; +\infty\)</span> is weaker than the condition for the space <span class="math inline">\(H^2\)</span>. Hence</p>
+<p><span class="math display">\[
+H^2[0,t] \subset M^2[0,t].
+\]</span></p>
+<p>The extension of the Itô integral to functions in <span class="math inline">\(M^2[0,t]\)</span> is made similarly by approximating with step functions in <span class="math inline">\(H_E^2[0,t]\)</span>, but with a weaker mode of convergence.</p>
+<p><span class="math inline">\(\,\)</span></p>
+<div class="theorem">
+<p><span id="thm:unlabeled-div-77" class="theorem"><strong>Theorem 2.6  </strong></span>Let <span class="math inline">\(G\in M^2[0,t]\)</span>. Then there exists a sequence of bounded step functions <span class="math inline">\(G_n\in H_E^2[0,t]\)</span> such that</p>
+<p><span class="math display">\[
+\int_0^t (G(s)-G_n(s))^2\,ds \longrightarrow 0 \quad \text{almost surely},\quad n\to\infty.
+\]</span></p>
+</div>
+<p><span class="math inline">\(\,\)</span></p>
+<div class="definition">
+<p><span id="def:unlabeled-div-78" class="definition"><strong>Definition 2.14  </strong></span>Let <span class="math inline">\(G\)</span> and <span class="math inline">\(G_n\)</span> be as in the theorem above. The Itô integral of <span class="math inline">\(G\)</span> over <span class="math inline">\([0,t]\)</span> is defined by</p>
+<p><span class="math display">\[
+\int_0^t G(s)\,dW(s) = P\mbox{-}\lim_{n\to\infty} \int_0^t G_n(s)\,dW(s),
+\]</span></p>
+<p>where the limit is taken <strong>in probability</strong>.</p>
+</div>
+<p><span class="math inline">\(\,\)</span></p>
+</div>
+<div id="itocalc-sde" class="section level2 hasAnchor" number="2.3">
+<h2><span class="header-section-number">2.3</span> Itô calculus and stochastic differential equations<a href="sde.html#itocalc-sde" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Having presented the Itô integral, we now introduce the <strong>calculus rules</strong> for these integrals: Itô calculus.</p>
+<p>Itô calculus departs from classical calculus due to an additional differentiation rule — the <strong>Itô chain rule</strong>. We next define an <strong>Itô process</strong> and state <strong>Itô’s theorem</strong>, the cornerstone of stochastic differential calculus.</p>
+<p><span class="math inline">\(\,\)</span></p>
+<div class="definition">
+<p><span id="def:unlabeled-div-79" class="definition"><strong>Definition 2.15  (Itô process) </strong></span>Let:</p>
+<ul>
+<li><p><span class="math inline">\((W(t),t\ge 0)\)</span> be a Wiener process;</p></li>
+<li><p><span class="math inline">\(X_0\)</span> be an <span class="math inline">\(\mathcal{A}_0\)</span>-measurable random variable;</p></li>
+<li><p><span class="math inline">\(F\)</span> be a function jointly measurable, adapted to the filtration <span class="math inline">\(\mathcal{A}_s\)</span> and such that
+<span class="math display">\[
+\int_0^d |F(s)|\,ds &lt; +\infty \quad \text{almost surely};
+\]</span></p></li>
+<li><p><span class="math inline">\(G\in M^2[0,d]\)</span>.</p></li>
+</ul>
+<p>The <strong>Itô process</strong> on the interval <span class="math inline">\(t\in[0,d]\)</span> is defined by</p>
+<p><span class="math display">\[
+X(t) = X_0 + \int_0^t F(s)\,ds + \int_0^t G(s)\,dW(s).
+\]</span></p>
+<p>In differential form:</p>
+<p><span class="math display">\[
+dX(t) = F(t)\,dt + G(t)\,dW(t).
+\]</span></p>
+</div>
+<p><span class="math inline">\(\,\)</span></p>
+<div class="theorem">
+<p><span id="thm:unlabeled-div-80" class="theorem"><strong>Theorem 2.7  (Itô's theorem) </strong></span>Let <span class="math inline">\(X(t,\omega)\)</span> be an Itô process as defined previously, and let <span class="math inline">\(Y(t) = h(t,X(t))\)</span>, where <span class="math inline">\(h\)</span>, <span class="math inline">\(h_{t}(t,x)\)</span> and <span class="math inline">\(h_{xx}(t,x)\)</span> are continuous functions. Then:</p>
+<ol style="list-style-type: lower-roman">
+<li><p><span class="math inline">\(Y(t) = Y(t,\omega)\)</span> is an Itô process with initial condition <span class="math inline">\(Y_0 = h(0, X_0)\)</span>;</p></li>
+<li><p>the differential form of <span class="math inline">\(Y(t)\)</span> is given by the <strong>Itô chain rule</strong>:</p></li>
+</ol>
+<p><span class="math display">\[
+dY_t = \left(\frac{\partial h(t,X_t)}{\partial t} + \frac{\partial h(t,X_t)}{\partial x} F(t) + \frac{1}{2} \frac{\partial^2 h(t,X_t)}{\partial x^2} G^2(t)\right) dt + \frac{\partial h(t,X_t)}{\partial x} G(t) \, dW_t;
+\]</span></p>
+<ol start="3" style="list-style-type: lower-roman">
+<li>the integral form of <span class="math inline">\(Y(t)\)</span> is</li>
+</ol>
+<p><span class="math display">\[
+Y_t = Y_0 + \int_{0}^{t} \left( \frac{\partial h(s,X_s)}{\partial s} + \frac{\partial h(s,X_s)}{\partial x} F(s) + \frac{1}{2} \frac{\partial^2 h(s,X_s)}{\partial x^2} G^2(s) \right) ds + \int_{0}^{t} \frac{\partial h(s,X_s)}{\partial x} G(s) \, dW_s.
+\]</span></p>
+</div>
+<p><span class="math inline">\(\,\)</span></p>
+<p>Having presented the definitions, properties and theorems related to Itô calculus, we can now address the solution of stochastic differential equations, i.e. the computation of their solutions. We begin with the definition of a solution of an Itô stochastic differential equation.</p>
+<p>In what follows we consider:</p>
+<ul>
+<li><p><span class="math inline">\(W = (W_t,\, t \ge 0)\)</span> is a Wiener process;</p></li>
+<li><p><span class="math inline">\(X_0\)</span> is a random variable independent of the Wiener process;</p></li>
+<li><p><span class="math inline">\(\mathcal{A}_t = \mathcal{F}(X_0, W_s),\ 0 \le s \le t\)</span>;</p></li>
+<li><p><span class="math inline">\(F, G\)</span> are two jointly measurable functions defined on <span class="math inline">\([0,T]\)</span>, with <span class="math inline">\(T&gt;0\)</span>.</p></li>
+</ul>
+<p><span class="math inline">\(\,\)</span></p>
+<div class="definition">
+<p><span id="def:unlabeled-div-81" class="definition"><strong>Definition 2.16  (Solution of an Itô SDE) </strong></span>A stochastic process <span class="math inline">\(X_t\)</span> is a solution of the Itô stochastic differential equation</p>
+<p><span class="math display">\[
+\label{sol_ito}
+\begin{cases}
+dX_t = F(X_t, t) \, dt + G(X_t, t) \, dW_t, &amp; \quad 0 \le t \le T,\\[4pt]
+X(0) = X_0, &amp;
+\end{cases}
+\]</span></p>
+<p>if it satisfies the following conditions:</p>
+<ol style="list-style-type: lower-roman">
+<li><p><span class="math inline">\(X\)</span> is <span class="math inline">\(\mathcal{F}_t\)</span>-measurable;</p></li>
+<li><p><span class="math inline">\(F\)</span> is non-anticipative and
+<span class="math display">\[
+\int_{0}^{T} F(X_s, s) \, ds &lt; +\infty;
+\]</span></p></li>
+<li><p><span class="math inline">\(G\)</span> is non-anticipative and
+<span class="math display">\[
+\int_{0}^{T} G^2(X_s, s) \, ds &lt; +\infty;
+\]</span></p></li>
+<li><p><span class="math display">\[
+X_t = X_0 + \int_{0}^{t} F(X_s, s) \, ds + \int_{0}^{t} G(X_s, s) \, dW_s
+\quad \text{almost surely}, \quad \forall t \in [0,T].
+\]</span></p></li>
+</ol>
+</div>
+<p><span class="math inline">\(\,\)</span></p>
+<div class="theorem">
+<p><span id="thm:unlabeled-div-82" class="theorem"><strong>Theorem 2.8  (Existence and uniqueness of solutions for Itô SDEs) </strong></span>Let <span class="math inline">\(F:\mathbb{R}\times[0,T]\to\mathbb{R}\)</span> and <span class="math inline">\(G:\mathbb{R}\times[0,T]\to\mathbb{R}\)</span> be continuous functions satisfying:</p>
+<ol style="list-style-type: lower-roman">
+<li><p><span class="math inline">\(|F(x,t) - F(y,t)| \le L|x-y|\)</span> and <span class="math inline">\(|G(x,t) - G(y,t)| \le L|x-y|\)</span> for all <span class="math inline">\(t\in[0,T]\)</span> and <span class="math inline">\(x,y\in\mathbb{R}\)</span>;</p></li>
+<li><p><span class="math inline">\(|F(x,t)| \le L(1+|x|)\)</span> and <span class="math inline">\(|G(x,t)| \le L(1+|x|)\)</span> for all <span class="math inline">\(t\in[0,T]\)</span> and <span class="math inline">\(x\in\mathbb{R}\)</span>,</p></li>
+</ol>
+<p>where <span class="math inline">\(L&gt;0\)</span> is a constant.</p>
+<p>Let <span class="math inline">\(X_0\)</span> be a random variable independent of the future increments of the Wiener process such that</p>
+<p><span class="math display">\[
+E\big(|X_0|^2\big) &lt; +\infty.
+\]</span></p>
+<p>Under these conditions there exists a unique solution <span class="math inline">\(X_t\)</span> to the Itô SDE</p>
+<p><span class="math display" id="eq:sol-ito">\[\begin{equation}
+\tag{2.5}
+\begin{cases}
+dX_t = F(X_t,t)\,dt + G(X_t,t)\,dW_t, &amp; 0 \le t \le T,\\[4pt]
+X(0) = X_0.
+\end{cases}
+\end{equation}\]</span></p>
+</div>
+<p><span class="math inline">\(\,\)</span></p>
+<p>This solution is a Markov process and, if <span class="math inline">\(F\)</span> and <span class="math inline">\(G\)</span> are continuous in <span class="math inline">\(t\)</span>, it is also a diffusion process.</p>
+<p>Uniqueness means that if <span class="math inline">\(X_t\)</span> and <span class="math inline">\(Y_t\)</span> are solutions of <a href="sde.html#eq:sol-ito">(2.5)</a>, then
+<span class="math display">\[
+P\big(X_t = Y_t\big) = 1,\qquad \forall t\in[0,T].
+\]</span></p>
+<p>The conditions on <span class="math inline">\(F\)</span> and <span class="math inline">\(G\)</span> are respectively a Lipschitz condition and a linear growth bound.</p>
+<p>The proof uses Grönwall’s lemma and can be found in any good textbook on stochastic differential equations.</p>
+<p><span class="math inline">\(\,\)</span></p>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-83" class="exercise"><strong>Exercise 2.11  </strong></span>Show that <span class="math inline">\(d(tW(t))\)</span> and use the result to prove that
+<span class="math display">\[
+\int_0^t s \, dW(s) = tW(t) - \int_0^t W(s)\, ds.
+\]</span></p>
+</div>
+<p><span class="math inline">\(\,\)</span></p>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-84" class="exercise"><strong>Exercise 2.12  </strong></span>Show that the equation <span class="math inline">\(dY(t) = Y(t)\, dW(t)\)</span>, with <span class="math inline">\(Y(0)=1\)</span>, has solution
+<span class="math display">\[
+Y(t) = \exp\!\left(W(t) - \tfrac{t}{2}\right), \quad t \ge 0.
+\]</span></p>
+</div>
+<p><span class="math inline">\(\,\)</span></p>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-85" class="exercise"><strong>Exercise 2.13  </strong></span>Consider the SDE
+<span class="math display">\[
+dY(t) = \mu\,dt + \sigma\,dW(t), \qquad Y(0) = y_0.
+\]</span>
+Show that its solution is
+<span class="math display">\[
+Y(t) = y_0 + \mu t + \sigma W(t).
+\]</span>
+<strong>Hint:</strong> this SDE is linear with constant coefficients; solve it by direct integration.</p>
+</div>
+<p><span class="math inline">\(\,\)</span></p>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-86" class="exercise"><strong>Exercise 2.14  </strong></span>Consider the Ornstein–Uhlenbeck model:
+<span class="math display">\[
+dX(t) = -\theta X(t)\,dt + \sigma\,dW(t), \qquad X(0)=x_0.
+\]</span>
+Show that the solution is
+<span class="math display">\[
+X(t) = x_0 e^{-\theta t} + \sigma \int_0^t e^{-\theta (t-s)}\,dW(s).
+\]</span>
+<strong>Hint:</strong> apply the change of variable <span class="math inline">\(Z(t) = e^{\theta t} X(t)\)</span> and solve the resulting SDE.</p>
+</div>
+<p><span class="math inline">\(\,\)</span></p>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-87" class="exercise"><strong>Exercise 2.15  </strong></span>Consider the Vasicek model:
+<span class="math display">\[
+dY(t) = b(A - Y(t))\,dt + \sigma\,dW(t), \qquad Y(0)=y_0.
+\]</span>
+Show that the solution is
+<span class="math display">\[
+Y(t) = A + (y_0 - A)e^{-bt} + \sigma \int_0^t e^{-b(t-s)}\,dW(s).
+\]</span>
+<strong>Hint:</strong> apply the change of variable <span class="math inline">\(Z(t) = Y(t) - A\)</span> and solve the resulting SDE.</p>
+</div>
+<p><span class="math inline">\(\,\)</span></p>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-88" class="exercise"><strong>Exercise 2.16  </strong></span>Consider the Gompertz (Fox) model:
+<span class="math display">\[
+dX(t) = rX(t)\big(\ln K - \ln X(t)\big)\,dt + \sigma X(t)\,dW(t), \qquad X(0)=x_0.
+\]</span>
+Show that the solution is
+<span class="math display">\[
+X(t)=\exp\!\left(
+   \ln K
+   + e^{-r t}\big(\ln x_0-\ln K\big)
+   - \frac{\sigma^2}{2r}\big(1-e^{-r t}\big)
+   + \sigma\int_0^t e^{-r (t-s)}\,dW_s
+\right).
+\]</span>
+<strong>Hint:</strong> apply the change of variable <span class="math inline">\(Z(t)=\ln X(t)\)</span> and solve the resulting SDE.</p>
+</div>
+<p><span class="math inline">\(\,\)</span></p>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-89" class="exercise"><strong>Exercise 2.17  </strong></span>Consider the Black–Scholes model:
+<span class="math display">\[
+dY(t) = rY(t)\,dt + \sigma Y(t)\,dW(t), \qquad Y(0)=y_0.
+\]</span>
+Show that the solution is
+<span class="math display">\[
+Y(t) = y_0\, e^{\left(r - \tfrac{\sigma^2}{2}\right)t + \sigma W(t)}.
+\]</span>
+<strong>Hint:</strong> apply the change of variable <span class="math inline">\(Z(t) = \ln Y(t)\)</span> and solve the resulting SDE.</p>
+</div>
+<p><span class="math inline">\(\,\)</span></p>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-90" class="exercise"><strong>Exercise 2.18  </strong></span>Let <span class="math inline">\(X(t)\)</span> be the price of a share at time <span class="math inline">\(t\ge0\)</span> following a Black–Scholes model with <span class="math inline">\(X(0)=\$52{,}800\)</span>, <span class="math inline">\(r=0.312\)</span> per quarter and <span class="math inline">\(\sigma^2 = 0.087\)</span> per quarter. Compute:</p>
+<ol style="list-style-type: lower-alpha">
+<li><p><span class="math inline">\(P\big(X(2\ \text{quarters}) &gt; \$70{,}000 \mid X(1\ \text{quarter}) = \$60{,}500\big)\)</span>.</p></li>
+<li><p><span class="math inline">\(E\big(X(1\ \text{quarter})\big)\)</span>.</p></li>
+<li><p><span class="math inline">\(P\big(\$55{,}000 \le X(1\ \text{quarter}) \le \$65{,}000\big)\)</span>.</p></li>
+<li><p><span class="math inline">\(\operatorname{Var}\big(X(1\ \text{quarter})\big)\)</span>.</p></li>
+<li><p><span class="math inline">\(E\big(X(2\ \text{quarters}) \mid X(0.5\ \text{quarter}) = \$54{,}200,\ X(1\ \text{quarter}) = \$60{,}500\big)\)</span>.</p></li>
+<li><p><span class="math inline">\(P\big(X(2\ \text{quarters}) &gt; \$70{,}000 \mid X(0.5\ \text{quarter}) = \$54{,}200,\ X(1\ \text{quarter}) = \$60{,}500\big)\)</span>.</p></li>
+<li><p><span class="math inline">\(\operatorname{Var}\big(X(2\ \text{quarters}) \mid X(1\ \text{quarter}) = \$60{,}500\big)\)</span>.</p></li>
+<li><p><span class="math inline">\(E\big(X(2\ \text{quarters}) \mid X(1\ \text{quarter}) = \$60{,}500\big)\)</span>.</p></li>
+</ol>
+<p><strong>Hint:</strong> use that <span class="math inline">\(X(t) = X(0)\,e^{Z(t)}\)</span> with <span class="math inline">\(Z(t)\)</span> Gaussian. Hence
+<span class="math display">\[
+X^2(t) = X(0)^2 e^{2Z(t)}
+\]</span>
+and
+<span class="math display">\[
+E\big(X^2(t)\big) = X(0)^2 E\!\big(e^{2Z(t)}\big) = X(0)^2 \exp\!\big( E(2Z(t)) + \tfrac{1}{2}\operatorname{Var}(2Z(t)) \big).
+\]</span></p>
+</div>
+<p><span class="math inline">\(\,\)</span></p>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-91" class="exercise"><strong>Exercise 2.19  </strong></span>Consider the inverse log-normal model:
+<span class="math display">\[
+dY(t) = -\tfrac{\sigma^2}{2} Y(t)\,dt + \sigma Y(t)\,dW(t), \qquad Y(0)=y_0.
+\]</span>
+Show that the solution is
+<span class="math display">\[
+Y(t) = y_0\,e^{\sigma W(t)}.
+\]</span>
+<strong>Hint:</strong> apply the change of variable <span class="math inline">\(Z(t) = \ln Y(t)\)</span> and solve the resulting SDE.</p>
+</div>
+<p><span class="math inline">\(\,\)</span></p>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-92" class="exercise"><strong>Exercise 2.20  </strong></span>Consider the Gompertz model with a limiting parameter:
+<span class="math display">\[
+dX(t)=(X(t)-\gamma)\big(\alpha - \beta\ln(X(t)-\gamma)\big)dt + \sigma (X(t)-\gamma)dW(t), \qquad X(0)=x_0.
+\]</span>
+Show that the solution is
+<span class="math display">\[
+X_t=\gamma+\exp\left\{e^{-\beta t}\left(\ln(x_0-\gamma)+\frac{1}{\beta}\left(\alpha-\frac{\sigma^2}{2}\right)(e^{\beta t}-1)\right)+\sigma e^{-\beta t}\int_{0}^{t}{e^{\beta s}}dW_s\right\}.
+\]</span>
+<strong>Hint:</strong> apply the change of variable <span class="math inline">\(Y(t)=\ln(X(t)-\gamma)\)</span> and solve the resulting SDE.</p>
+</div>
+<p><span class="math inline">\(\,\)</span></p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="intro-stoch-proc.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="bibliography.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": null,
+    "text": null
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["_main.pdf"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
