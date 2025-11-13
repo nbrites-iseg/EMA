@@ -8,6 +8,7 @@ site: bookdown::bookdown_site
 documentclass: book
 output:
   bookdown::pdf_document2:
+    output_file: "EMA.pdf"
     always_allow_html: true
     number_sections: true
     toc: true
@@ -21,7 +22,6 @@ output:
     df_print: kable
     highlight: kate
     css: style.css
-    language: pt-PT 
     config:
       download: ["pdf"]
 header-includes:
@@ -120,7 +120,7 @@ $\,$
 
 # Introduction to Stochastic Processes {#intro-stoch-proc}
 
-## Fundamental Concepts {#conceitos-fundamentais}
+## Fundamental Concepts {#fund-concepts1.1}
 
 This section provides a brief review of basic concepts in probability theory and random variables. We then introduce the notion of a *stochastic process*, understood as a family of random variables defined on a probability space and indexed by a parameter set, typically interpreted as time. Finally, we examine some fundamental classes of stochastic processes, in particular those with independent and stationary increments, as well as strictly and weakly stationary processes.
 
@@ -460,9 +460,9 @@ where $Z_t$ represents the total amount of beer ordered up to time $t$.
 :::
 
 
-## Classical types of stochastic processes {#tipos-classicos-de-processos-estocasticos}
+## Classical types of stochastic processes {#tipos-classicos1.2}
 
-### Processes with independent and stationary increments {#processos-de-incrementos-independentes-e-estacionarios}
+### Processes with independent and stationary increments {#processos-de-incrementos-indep1.2.1}
 
 ::: {.definition name="Process with independent increments"}
 $\{X_t, ~ t \in T\}$ is a stochastic process with **independent increments** if and only if
@@ -492,7 +492,7 @@ $\,$
 Given a stochastic process (SP) $X := \{X_t, ~ t \in T\}$, where $T$ is equipped with an order relation, $X$ is a process with **independent and stationary increments** if and only if it has independent increments and stationary increments.
 :::
 
-### Real Second-Order Stochastic Process {#real-second-order-stochastic-process}
+### Real Second-Order Stochastic Process {#real-second-order1.2.3}
 
 ::: {.definition name="Gaussian Process"}
 
@@ -526,7 +526,7 @@ A **Gaussian White Noise** process $\{\varepsilon_t, ~t \in T\}$ is defined as a
 - $\forall ~n \in \mathbb{N}, \forall ~t_1, t_2, \ldots, t_n \in T$, the vector $(\varepsilon_{t_1}, \varepsilon_{t_2}, \ldots, \varepsilon_{t_n})$ is Gaussian.
 :::
 
-### Stationary Processes {#stationary-processes}
+### Stationary Processes {#stationary-proc1.2.4}
 
 ::: {.definition name="Strictly Stationary Process"}
 A stochastic process $\{X_t,~ t \in T\}$ is said to be **strictly stationary** (or strongly stationary) if:
@@ -675,16 +675,14 @@ $\,$
 ::: {.exercise}
 Let $X = (X_t: ~ t \geq 0)$ be a stochastic process defined on the probability space $(\Omega, \mathcal{F}, P)$ such that, for every $t \geq 0$, $X_t \sim \mathcal{N}(0, t)$ and $P(X_0 = 0) = 1$.
 
-(a) Under what conditions is $X$ a process with independent and stationary increments?
+(a) Assuming $X$ is a process with independent and stationary increments, show that: 
 
-(b) Assuming $X$ is a process with independent and stationary increments, show that: 
-
-(i) For all $t, s \in [0,+\infty)$ with $t > s$, it holds that 
+    (i) For all $t, s \in [0,+\infty)$ with $t > s$, it holds that 
 $$X_t - X_s \sim \mathcal{N}(0, |t - s|);$$ 
 
-(ii) $X$ is a centered Gaussian process.
+    (ii) $X$ is a centered Gaussian process.
 
-(c) Consider the stochastic process $Y = (Y_t: t \geq 0)$ defined by:
+(b) Consider the stochastic process $Y = (Y_t: t \geq 0)$ defined by:
 $$
 Y(t) = 
 \begin{cases}
@@ -738,7 +736,7 @@ $$
 :::
 
 
-### Martingales {#martingales}
+### Martingales {#mart1.2.6}
 
 From a modeling perspective, martingales are suitable for modeling random phenomena such as gambling.
 
@@ -808,7 +806,7 @@ Let $(X_n, n=0,1,2,\dots)$ be a stochastic process with state space $\mathbb{N}_
 :::
 
 
-### Markov Processes {#markov-processes}
+### Markov Processes {#markov-proc1.2.7}
 
 Markov processes are suitable for modeling random phenomena whose future behavior is not influenced by the knowledge of their past, but only depends on the current state. In other words, the probability that the physical system is in a given state at time $t$ can be deduced from the knowledge of that state at any previous time, and this probability does not depend on the "history" of the system before $t$.
 
@@ -845,7 +843,7 @@ Thus, a Markov chain can be interpreted as a stochastic process whose evolution 
 
 # Introduction to stochastic differential equations {#sde}
 
-## Wiener process {#wiener-process}
+## Wiener process {#wiener}
 
 ::: {.definition name="Filtration"}
 Let $X = (X(t), ~ t \in T)$ be a stochastic process defined on the probability space $(\Omega, \mathcal{F}, P)$, with index set $T = [0, +\infty[$. A family of sub-$\sigma$-algebras of $\mathcal{F}$, such that for $s \leq t$ we have $\mathcal{F}_s \subset \mathcal{F}_t$, is called a **filtration**.
@@ -1071,50 +1069,9 @@ Consider a standard Brownian motion $(B(t),~t\geq 0)$. Determine the covariance 
 $\,$
 
 ::: {.exercise}
-<!-- Alfredo 6.5-->
-Consider a standard Brownian motion $(B(t),~t \geq 0)$. For fixed $t$ and $M(t)=\max\limits_{0\leq u\leq t}B(u)$, show that:
-
-(a) $M(t)$ and $\left| B(t)\right|$ have the same distribution with p.d.f.
-\[
-f_{M(t)}(x)=\frac{2}{\sqrt{t}}\phi (x/\sqrt{t}), \quad x>0.
-\]
-
-(b) $E(M(t))=\sqrt{2t/\pi }$.
-:::
-
-$\,$
-
-::: {.exercise}
 <!-- Alfredo 6.6-->
 Let $B_{1}(t)$ and $B_{2}(t)$ be two independent Brownian motions, and define $$R(t):=\sqrt{B_{1}(t)^{2}+B_{2}(t)^{2}}, \quad t\geq 0.$$
 Compute $E(R(t))$.
-:::
-
-$\,$
-
-::: {.exercise}
-<!-- Alfredo 6.7-->
-The fluctuations of the share price of a certain company are modelled by a Brownian motion $(A(t),\, t \geq 0)$. Suppose the company goes bankrupt if the market price of its shares reaches the level zero.  
-
-If the initial share value is $A(0) = 5$ monetary units, determine the probability that...
-
-(a) ... the company goes bankrupt at time $t = 25$.
-
-(b) ... the shares are above 10 monetary units at time $t = 25$.
-:::
-
-$\,$
-
-::: {.exercise}
-<!-- Alfredo 6.8-->
-Consider a Brownian motion with parameters \(\mu=0.1\) and \(\sigma=2\). Compute the probability that the process exits the interval \((a,b]\) at the point \(b\), starting from \(X(0)=0\), for \(b=1,10,100\) and \(a=-b\).
-:::
-
-$\,$
-
-::: {.exercise}
-<!-- Alfredo 6.9-->
-The fluctuation of the price of a certain type of shares can be described by a geometric Brownian motion with standard deviation \(\alpha = 0\). Assuming you purchase these shares, what are the chances that your invested capital will double?
 :::
 
 ## The Itô integral {#itoint}
@@ -1158,6 +1115,12 @@ If the functions $a(s,x)$ and $b(s,x)$ are independent of the time variable $s$,
 The functions $a(s,x)$ and $b(s,x)$ are called, respectively, the **drift coefficient** (or **first infinitesimal moment**) and the **diffusion coefficient** (or **second infinitesimal moment**).
 
 The drift coefficient, $a(s,x)$, measures the rate of change of the process's mean at time $s$, whereas the diffusion coefficient, $b(s,x)$, measures the intensity of the process's fluctuations — in other words, the rate of change of the process's variance at time $s$.
+
+**Remark:** In the literature, there are alternative definitions of a diffusion process, some of which assume additional or different hypotheses. For example, in terms of proofs, condition~(iv) can be replaced by a stronger condition requiring the existence of higher-order moments,
+\[
+\lim_{\Delta \to 0^+} E_{s,x}\!\left[\frac{|X_{s+\Delta} - X_s|^{2+\delta}}{\Delta}\right] = 0,
+\]
+for some $\delta > 0$.
 :::
 
 $\,$
@@ -1169,32 +1132,6 @@ $\,$
 (ii) Show that $X_t = x_0 + \sigma W_t$, with constants $x_0$ and $\sigma$, i.e. a (non-standard) Wiener process, is a homogeneous diffusion process with zero drift coefficient and diffusion coefficient $\sigma^2$.
 
 (iii) Show that $Z_t = x_0 + \mu t + \sigma W_t$, with constants $x_0$, $\mu$ and $\sigma$, known as Brownian motion with drift, is a homogeneous diffusion process with drift coefficient $\mu$ and diffusion coefficient $\sigma^2$.
-:::
-
-$\,$
-
-::: {.theorem}
-Let \(X_t\) be a diffusion process, as defined above, with transition density function \(p(t, y \mid s, x)\), continuous in \(s\), and with first and second partial derivatives in \(x\) finite and continuous in \(s\). Under these conditions the following hold:
-
-1. **Forward Kolmogorov equation** (or **Fokker–Planck equation**):
-   $$
-   \frac{\partial p}{\partial t} + \frac{\partial\big(a(s,x)\,p\big)}{\partial y} - \frac{1}{2} \frac{\partial^2\big(b(s,x)\,p\big)}{\partial y^2} = 0,
-   $$
-   with initial condition
-   $$
-   \lim_{t \downarrow s} p(t, y \mid s, x) = \delta(x - y),
-   $$
-   where \(\delta\) denotes the Dirac delta function, and \((s, x)\) is fixed;
-
-2. **Backward Kolmogorov equation**:
-   $$
-   \frac{\partial p}{\partial s} + a(s,x)\,\frac{\partial p}{\partial x} + \frac{1}{2}\,b(s,x)\,\frac{\partial^2 p}{\partial x^2} = 0,
-   $$
-   with initial condition
-   $$
-   \lim_{t \uparrow s} p(t, y \mid s, x) = \delta(x - y),
-   $$
-   where \(\delta\) denotes the Dirac delta function, and \((t, y)\) is fixed.
 :::
 
 $\,$
@@ -1359,8 +1296,6 @@ Let \(W(t),\ t\ge 0\), be a standard Wiener process defined on a probability spa
 
 Informally, \(\mathcal{A}_s\) contains all the information about the process available up to time \(s\).
 
-Usually the chosen non-anticipative filtration \(\mathcal{A}_s\) coincides with the natural filtration \(\mathcal{M}_s\), unless extra information must be included (for example, to incorporate an initial condition); in that case one works with a larger filtration provided it remains non-anticipative.
-
 $\,$
 
 :::{.definition name="Non-anticipative process"}
@@ -1495,32 +1430,6 @@ Let \(F,G\in H^2[0,t]\) and \(\alpha,\beta\in\mathbb{R}\). Then:
 
 $\,$
 
-The Itô integral for functions in \(H^2[0,t]\) can be studied as a function of its upper limit, yielding an **indefinite integral**. The proofs of the properties above lie beyond the scope of this course.
-
-$\,$
-
-::: {.definition name="Indefinite Itô integral"}
-Let \(G\in H^2[0,d]\) and consider \(t\in[0,d]\). The indefinite Itô integral is the stochastic process
-
-$$
-Z(t) = \int_0^t G(s)\,dW(s) = \int_0^d G(s)\,I_{[0,t]}(s)\,dW(s).
-$$
-:::
-
-$\,$
-
-::: {.theorem}
-Let \(Z(t)\) be the process defined above. Then:
-
-1. \(Z(t)\) is a martingale with respect to the filtration \(\mathcal{A}_t\);
-
-2. \(Z(t)\) has a continuous version (i.e. it has almost surely continuous paths);
-
-3. \(Z(t)\) has uncorrelated increments.
-:::
-
-$\,$
-
 The classes of functions introduced so far are fairly simple. In practice one often needs to consider Itô integrals where \(G\) belongs not only to \(H^2[0,t]\) but to the larger space \(M^2[0,t]\).
 
 $\,$
@@ -1573,7 +1482,7 @@ where the limit is taken **in probability**.
 
 $\,$
 
-## Itô calculus and stochastic differential equations {#itocalc-sde}
+## Itô calculus and stochastic differential equations {#itocalc}
 
 Having presented the Itô integral, we now introduce the **calculus rules** for these integrals: Itô calculus.
 
@@ -1678,47 +1587,6 @@ X_t = X_0 + \int_{0}^{t} F(X_s, s) \, ds + \int_{0}^{t} G(X_s, s) \, dW_s
 
 $\,$
 
-:::{.theorem name="Existence and uniqueness of solutions for Itô SDEs"}
-Let \(F:\mathbb{R}\times[0,T]\to\mathbb{R}\) and \(G:\mathbb{R}\times[0,T]\to\mathbb{R}\) be continuous functions satisfying:
-
-(i) \(|F(x,t) - F(y,t)| \le L|x-y|\) and \(|G(x,t) - G(y,t)| \le L|x-y|\) for all \(t\in[0,T]\) and \(x,y\in\mathbb{R}\);
-
-(ii) \(|F(x,t)| \le L(1+|x|)\) and \(|G(x,t)| \le L(1+|x|)\) for all \(t\in[0,T]\) and \(x\in\mathbb{R}\),
-
-where \(L>0\) is a constant.
-
-Let \(X_0\) be a random variable independent of the future increments of the Wiener process such that
-
-\[
-E\big(|X_0|^2\big) < +\infty.
-\]
-
-Under these conditions there exists a unique solution \(X_t\) to the Itô SDE
-
-\begin{equation}
-(\#eq:sol-ito)
-\begin{cases}
-dX_t = F(X_t,t)\,dt + G(X_t,t)\,dW_t, & 0 \le t \le T,\\[4pt]
-X(0) = X_0.
-\end{cases}
-\end{equation}
-:::
-
-$\,$
-
-This solution is a Markov process and, if \(F\) and \(G\) are continuous in \(t\), it is also a diffusion process.
-
-Uniqueness means that if \(X_t\) and \(Y_t\) are solutions of \@ref(eq:sol-ito), then
-\[
-P\big(X_t = Y_t\big) = 1,\qquad \forall t\in[0,T].
-\]
-
-The conditions on \(F\) and \(G\) are respectively a Lipschitz condition and a linear growth bound.
-
-The proof uses Grönwall's lemma and can be found in any good textbook on stochastic differential equations.
-
-$\,$
-
 ::: {.exercise}
 Show that \(d(tW(t))\) and use the result to prove that
 \[
@@ -1733,9 +1601,12 @@ Show that the equation \(dY(t) = Y(t)\, dW(t)\), with \(Y(0)=1\), has solution
 \[
 Y(t) = \exp\!\left(W(t) - \tfrac{t}{2}\right), \quad t \ge 0.
 \]
+
+**Hint:** apply the change of variable \(X(t) = \ln Y(t)\) and solve the resulting SDE.
 :::
 
 $\,$
+
 
 ::: {.exercise}
 Consider the SDE
@@ -1785,15 +1656,15 @@ Consider the Gompertz (Fox) model:
 dX(t) = rX(t)\big(\ln K - \ln X(t)\big)\,dt + \sigma X(t)\,dW(t), \qquad X(0)=x_0.
 \]
 Show that the solution is
-\[
+
+$$
 X(t)=\exp\!\left(
-   \ln K 
-   + e^{-r t}\big(\ln x_0-\ln K\big) 
-   - \frac{\sigma^2}{2r}\big(1-e^{-r t}\big) 
-   + \sigma\int_0^t e^{-r (t-s)}\,dW_s
+   e^{-rt}\ln x_0+ (1-e^{-r t})\big(\ln K-\dfrac{\sigma^2}{2r}\big)  
+   + \sigma\int_0^t e^{r (s-t)}\,dW_s
 \right).
-\]
-**Hint:** apply the change of variable \(Z(t)=\ln X(t)\) and solve the resulting SDE.
+$$
+
+**Hint:** apply the change of variable $Z(t)=e^{rt}\ln X(t)$ and solve the resulting SDE.
 :::
 
 $\,$
@@ -1813,44 +1684,13 @@ Y(t) = y_0\, e^{\left(r - \tfrac{\sigma^2}{2}\right)t + \sigma W(t)}.
 $\,$
 
 ::: {.exercise}
-Let \(X(t)\) be the price of a share at time \(t\ge0\) following a Black–Scholes model with \(X(0)=\$52{,}800\), \(r=0.312\) per quarter and \(\sigma^2 = 0.087\) per quarter. Compute:
-
-(a) \(P\big(X(2\ \text{quarters}) > \$70{,}000 \mid X(1\ \text{quarter}) = \$60{,}500\big)\).
-
-(b) \(E\big(X(1\ \text{quarter})\big)\).
-
-(c) \(P\big(\$55{,}000 \le X(1\ \text{quarter}) \le \$65{,}000\big)\).
-
-(d) \(\operatorname{Var}\big(X(1\ \text{quarter})\big)\).
-
-(e) \(E\big(X(2\ \text{quarters}) \mid X(0.5\ \text{quarter}) = \$54{,}200,\ X(1\ \text{quarter}) = \$60{,}500\big)\).
-
-(f) \(P\big(X(2\ \text{quarters}) > \$70{,}000 \mid X(0.5\ \text{quarter}) = \$54{,}200,\ X(1\ \text{quarter}) = \$60{,}500\big)\).
-
-(g) \(\operatorname{Var}\big(X(2\ \text{quarters}) \mid X(1\ \text{quarter}) = \$60{,}500\big)\).
-
-(h) \(E\big(X(2\ \text{quarters}) \mid X(1\ \text{quarter}) = \$60{,}500\big)\).
-
-**Hint:** use that \(X(t) = X(0)\,e^{Z(t)}\) with \(Z(t)\) Gaussian. Hence
-\[
-X^2(t) = X(0)^2 e^{2Z(t)}
-\]
-and
-\[
-E\big(X^2(t)\big) = X(0)^2 E\!\big(e^{2Z(t)}\big) = X(0)^2 \exp\!\big( E(2Z(t)) + \tfrac{1}{2}\operatorname{Var}(2Z(t)) \big).
-\]
-:::
-
-$\,$
-
-::: {.exercise}
-Consider the inverse log-normal model:
+Consider the SDE
 \[
 dY(t) = -\tfrac{\sigma^2}{2} Y(t)\,dt + \sigma Y(t)\,dW(t), \qquad Y(0)=y_0.
 \]
 Show that the solution is
 \[
-Y(t) = y_0\,e^{\sigma W(t)}.
+Y(t) = y_0\,e^{-\sigma^2 t + \sigma W(t)}.
 \]
 **Hint:** apply the change of variable \(Z(t) = \ln Y(t)\) and solve the resulting SDE.
 :::
@@ -1903,4 +1743,7 @@ $\,$
 [nbrites\@iseg.ulisboa.pt](mailto:nbrites@iseg.ulisboa.pt){.email}
 
 
+
+
+<!--chapter:end:index.Rmd-->
 

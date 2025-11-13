@@ -1,4 +1,3 @@
 book_filename: "EMA"
-output_dir: "docs"
-delete_merged_file: true
-
+output_dir: "docs"     # é aqui que o site final ficará
+new_session: yes
